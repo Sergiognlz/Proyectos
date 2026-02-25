@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Entrega/Recogida de Equipamiento Informático</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <!-- Signature Pad -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+    <div class="container my-4">
+
+        <!-- CABECERA -->
+        <div class="cabecera">
+            <div class="cabecera-logo">
+                <img src="logo.png" alt="Junta de Andalucía">
+            </div>
+            <div class="cabecera-centro">
+                <h5>Consejería de Industria, Energía y Minas</h5>
+                <h6>Junta de Andalucía</h6>
+            </div>
+            <div class="cabecera-derecha">
+                <div class="empresa-nombre">SANDETEL</div>
+                <div class="empresa-siglas">Sociedad Andaluza para el Desarrollo<br>de las Telecomunicaciones, S.A.M.P</div>
+            </div>
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="titulo-formulario">
+            <h4>Formulario de Entrega o Recogida de Equipamiento Informático</h4>
+        </div>
+
+        <!-- SECCIÓN 1: DATOS GENERALES -->
+        <div class="seccion mb-3">
+            <div class="seccion-titulo">1. Datos Generales</div>
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <label class="form-label">Operación</label>
+                    <div>
+                        <input type="radio" name="operacion" value="Entrega" id="opEntrega">
+                        <label for="opEntrega" class="me-3">Entrega</label>
+                        <input type="radio" name="operacion" value="Recogida" id="opRecogida">
+                        <label for="opRecogida">Recogida</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="nTique" class="form-label">N.º Tique</label>
+                    <input type="text" class="form-control" id="nTique">
+                </div>
+                <div class="col-md-4">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Modalidad</label>
+                    <div class="d-flex align-items-center gap-3">
+                        <div>
+                            <input type="radio" name="modalidad" value="Dotación" id="modDotacion">
+                            <label for="modDotacion">Dotación</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="modalidad" value="Préstamo" id="modPrestamo">
+                            <label for="modPrestamo">Préstamo</label>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="radio" name="modalidad" value="Otro" id="modOtro">
+                            <label for="modOtro">Otro</label>
+                            <input type="text" class="form-control form-control-sm" id="modalidadOtroTexto" placeholder="Especificar..." style="width: 150px; display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: PERSONA QUE ENTREGA -->
+        <div class="seccion mb-3">
+            <div class="seccion-titulo">2. Datos de la persona que entrega</div>
+            <div class="row g-3 mt-1">
+                <div class="col-12">
+                    <input type="radio" name="tipoEntrega" value="Área TI" id="entAreaTI">
+                    <label for="entAreaTI" class="me-3">Área TI</label>
+                    <input type="radio" name="tipoEntrega" value="Pers. Interno" id="entPersInterno">
+                    <label for="entPersInterno" class="me-3">Pers. Interno</label>
+                    <input type="radio" name="tipoEntrega" value="Pers. Externo" id="entPersExterno">
+                    <label for="entPersExterno" class="me-3">Pers. Externo</label>
+                    <input type="radio" name="tipoEntrega" value="Proveedor" id="entProveedor">
+                    <label for="entProveedor">Proveedor</label>
+                </div>
+                <div class="col-md-6">
+                    <label for="entNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="entNombre">
+                </div>
+                <div class="col-md-6">
+                    <label for="entDNI" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="entDNI">
+                </div>
+                <div class="col-md-6">
+                    <label for="entEmpresa" class="form-label">Empresa</label>
+                    <input type="text" class="form-control" id="entEmpresa">
+                </div>
+                <div class="col-md-6">
+                    <label for="entTelf" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="entTelf">
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: PERSONA QUE RECOGE -->
+        <div class="seccion mb-3">
+            <div class="seccion-titulo">3. Datos de la persona que recoge</div>
+            <div class="row g-3 mt-1">
+                <div class="col-12">
+                    <input type="radio" name="tipoRecoge" value="Área TI" id="recAreaTI">
+                    <label for="recAreaTI" class="me-3">Área TI</label>
+                    <input type="radio" name="tipoRecoge" value="Pers. Interno" id="recPersInterno">
+                    <label for="recPersInterno" class="me-3">Pers. Interno</label>
+                    <input type="radio" name="tipoRecoge" value="Pers. Externo" id="recPersExterno">
+                    <label for="recPersExterno" class="me-3">Pers. Externo</label>
+                    <input type="radio" name="tipoRecoge" value="Proveedor" id="recProveedor">
+                    <label for="recProveedor">Proveedor</label>
+                </div>
+                <div class="col-md-6">
+                    <label for="recNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="recNombre">
+                </div>
+                <div class="col-md-6">
+                    <label for="recDNI" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="recDNI">
+                </div>
+                <div class="col-md-6">
+                    <label for="recEmpresa" class="form-label">Empresa</label>
+                    <input type="text" class="form-control" id="recEmpresa">
+                </div>
+                <div class="col-md-6">
+                    <label for="recTelf" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="recTelf">
+                </div>
+            </div>
+        </div>
+
+        
+<!-- TABLA DE EQUIPAMIENTO -->
+<div class="seccion mb-3">
+    <div class="seccion-titulo">Datos del equipamiento informático entregado o recogido</div>
+    <div class="table-responsive mt-2">
+        <table class="table table-bordered" id="tablaEquipamiento">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>N.º de serie</th>
+                    <th>CRIHJA / IMEI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control"></td>
+                    <td>
+                        <select class="form-select form-select-sm marca-select">
+                            <option value=""></option>
+                            <option value="HP">HP</option>
+                            <option value="Yealink">Yealink</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Motorola">Motorola</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                        <input type="text" class="form-control form-control-sm marca-otro" placeholder="Especificar..." style="display:none;">
+                    </td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><input type="text" class="form-control"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+       
+      <!-- TEXTO LEGAL -->
+<div class="texto-legal mb-4">
+    <p>El usuario se compromete a la devolución de dicho equipamiento informático en caso de rescindir su relación laboral con SANDETEL.</p>
+    <p>La utilización de dicho equipamiento informático es solo y exclusivamente para el uso laboral no pudiéndose dedicar a otros fines sin contar con autorización previa por parte del Área TI de SANDETEL.</p>
+    <p>El usuario se hace responsable de todo el equipamiento informático a él entregado, así como del mantenimiento y uso de este. En caso de detectarse alguna anomalía, pérdida, extravío, sustracción, robo o cualquier otra circunstancia debe comunicarse en un plazo máximo de 3 días al Área TI de SANDETEL. [Ante alguno de los anteriores supuestos será necesario entregar copia de la correspondiente denuncia oficial].</p>
+    <p>Como responsable del equipamiento informático, el Área TI es el único que decidirá sobre los cambios que fueran necesarios realizar sobre el equipamiento informático entregado al personal interno o externo (rotura, renovación, etc.).</p>
+    <p>En caso de la no devolución del equipamiento informático cedido, se podrán llevar a cabo las correspondientes acciones legales.</p>
+    <p>El usuario se compromete a cumplir la normativa existente que aplica:</p>
+    <p>- Resolución de 22 de octubre de 2020, de la Secretaría General para la Administración Pública, por la que se aprueba el Código de Conducta en el uso de las Tecnologías de la Información y la Comunicación para profesionales públicos de la Administración de la Junta de Andalucía. (BOJA20-208-00009-12587-01_00179877)</p>
+    <p>- PL-26 Edic. 0 - Política de protección de datos de SANDETEL.</p>
+    <p>- PL-022-2 - Dotación informática y equipamiento del puesto de trabajo de SANDETEL.</p>
+    <p>- PL-025-3 - Política de seguridad TIC de SANDETEL.</p>
+</div>
+
+       <!-- FIRMAS -->
+<div class="row mb-4">
+    <div class="col-md-6 text-center">
+        <label class="form-label fw-bold">Firma del Área TI</label>
+        <canvas id="firmaAreaTI" class="firma-canvas"></canvas>
+        <br>
+        <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="btnLimpiarTI" onclick="limpiarFirma('firmaAreaTI')">Limpiar</button>
+    </div>
+    <div class="col-md-6 text-center">
+        <label class="form-label fw-bold">Firma de la otra parte</label>
+        <canvas id="firmaOtraParte" class="firma-canvas"></canvas>
+        <br>
+        <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="btnLimpiarOtra" onclick="limpiarFirma('firmaOtraParte')">Limpiar</button>
+    </div>
+</div>
+
+        <!-- BOTÓN GENERAR PDF -->
+        <div class="text-center mb-5" id="botonPDF">
+            <button type="button" class="btn btn-primary btn-lg" onclick="generarPDF()">Generar y Descargar PDF</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
