@@ -3,22 +3,21 @@ body {
     font-size: 14px;
     font-family: 'Noto Sans', sans-serif;
 }
-
 .container {
     background-color: #ffffff;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: none;
     max-width: 900px;
 }
 /* CABECERA */
 .cabecera {
     border-bottom: 3px solid #007A33;
     padding-bottom: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    padding-top: 15px;
     display: flex;
     justify-content: center;
 }
-
 .cabecera-logo-completo {
     height: 60px;
     display: block;
@@ -26,64 +25,54 @@ body {
 .cabecera-logo img {
     height: 70px;
 }
-
 .cabecera-centro {
     text-align: center;
     flex: 1;
     padding: 0 20px;
 }
-
 .cabecera-centro h5 {
     color: #007A33;
     font-weight: bold;
     margin: 0;
     font-size: 13px;
 }
-
 .cabecera-centro h6 {
     color: #555;
     margin: 2px 0 0 0;
     font-size: 11px;
 }
-
 .cabecera-derecha {
     text-align: right;
     font-size: 11px;
     color: #333;
     line-height: 1.5;
 }
-
 .cabecera-derecha .empresa-nombre {
     font-weight: bold;
     color: #007A33;
     font-size: 13px;
 }
-
 .cabecera-derecha .empresa-siglas {
     font-size: 11px;
     color: #555;
 }
-
 /* TÍTULO FORMULARIO */
 .titulo-formulario {
     text-align: center;
     margin-bottom: 10px;
 }
-
 .titulo-formulario h4 {
     color: #007A33;
     font-weight: bold;
     text-decoration: underline;
     font-size: 14px;
 }
-
 /* SECCIONES */
 .seccion {
     border: 1px solid #007A33;
     padding: 8px;
     margin-bottom: 8px !important;
 }
-
 .seccion-titulo {
     font-weight: bold;
     background-color: #007A33;
@@ -92,34 +81,28 @@ body {
     margin-bottom: 8px;
     font-size: 12px;
 }
-
 /* TABLA */
 .table {
     font-size: 11px;
     margin-bottom: 5px;
 }
-
 .table thead {
     background-color: #007A33;
     color: white;
 }
-
 .table thead th {
     color: white;
     font-size: 11px;
     padding: 4px 5px;
 }
-
 .table td {
     padding: 3px 5px;
 }
-
 .table input.form-control {
     border: none;
     padding: 2px 4px;
     font-size: 11px;
 }
-
 /* TEXTO LEGAL */
 .texto-legal {
     font-size: 9.5px;
@@ -129,29 +112,39 @@ body {
     background-color: #f9f9f9;
     margin-bottom: 8px !important;
 }
-
 .texto-legal p {
     margin-bottom: 3px;
 }
-
+.texto-legal-compromiso {
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    background-color: #f9f9f9;
+    border-left: 3px solid #007A33;
+    padding: 16px 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: #444;
+}
+.texto-legal-compromiso p {
+    margin-bottom: 8px;
+}
 /* FIRMAS */
 .firma-canvas {
     border: 1px solid #007A33;
     width: 100%;
-    height: 100px;
+    height: 150px;
     cursor: crosshair;
     background-color: #fff;
     touch-action: none;
     display: block;
 }
-
 .firma-label {
     font-weight: bold;
     color: #007A33;
     margin-bottom: 5px;
     display: block;
 }
-
 /* BOTÓN */
 .btn-primary {
     background-color: #007A33;
@@ -159,52 +152,129 @@ body {
     padding: 10px 40px;
     font-size: 15px;
 }
-
 .btn-primary:hover {
     background-color: #005a24;
     border-color: #005a24;
 }
-
 .btn-outline-secondary {
     color: #007A33;
     border-color: #007A33;
     font-size: 12px;
 }
-
 .btn-outline-secondary:hover {
     background-color: #007A33;
     color: white;
 }
-
 /* Ajustes generales de espaciado */
 .row.g-3 {
     --bs-gutter-y: 0.4rem;
 }
-
 .form-label {
     margin-bottom: 2px;
     font-size: 12px;
 }
-
 .form-control {
     padding: 3px 8px;
     font-size: 12px;
 }
-
 .row.mb-4 {
     margin-bottom: 8px !important;
 }
 #tablaEquipamiento tbody tr {
     height: 24px;
 }
-
 #tablaEquipamiento tbody td {
     padding: 2px 4px;
     vertical-align: middle;
 }
-
 #tablaEquipamiento tbody input.form-control {
     height: 20px;
     padding: 1px 4px;
     font-size: 11px;
+}
+
+/* ---- COMPROMISO TIC ---- */
+.titulo-documento h4 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.texto-documento {
+    font-size: 17px;
+    line-height: 2.2;
+    text-align: justify !important;
+    padding: 0 60px !important;
+}
+.campo-linea-completa {
+    border: none;
+    border-bottom: 1px solid #333;
+    width: 100%;
+    font-size: 16px;
+    padding: 2px 4px;
+    background: transparent;
+    display: block;
+    margin-top: 4px;
+}
+.campo-linea-completa:focus {
+    outline: none;
+    border-bottom: 2px solid #007A33;
+}
+.campo-inline {
+    border: none;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    padding: 2px 4px;
+    background: transparent;
+}
+.campo-inline:focus {
+    outline: none;
+    border-bottom: 2px solid #007A33;
+    box-shadow: none;
+}
+.linea-campo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.linea-campo label {
+    white-space: nowrap;
+    font-size: 16px;
+    margin: 0;
+}
+.linea-campo input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    padding: 2px 4px;
+    background: transparent;
+}
+.linea-campo input:focus {
+    outline: none;
+    border-bottom: 2px solid #007A33;
+}
+.linea-campo select {
+    border: none;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+    padding: 2px 4px;
+    background: transparent;
+    width: 220px;
+}
+.linea-campo select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.marca-otro {
+    display: none;
 }
