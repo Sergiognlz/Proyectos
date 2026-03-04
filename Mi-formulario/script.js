@@ -13,22 +13,38 @@ document.querySelectorAll('input[name="modalidad"]').forEach(radio => {
     });
 });
 
-// Mostrar input de texto al seleccionar Otro en Marca
+// ---- MARCA SELECT con botón volver ----
 document.querySelectorAll('.marca-select').forEach(select => {
-    select.addEventListener('change', () => {
-        const otroInput = select.parentElement.querySelector('.marca-otro');
-        if (select.value === 'Otro') {
-            select.style.display = 'none';
+    select.addEventListener('change', function() {
+        const otroInput = this.parentElement.querySelector('.marca-otro');
+        const btnVolver = this.parentElement.querySelector('.btn-volver-marca');
+        if (this.value === 'Otro') {
+            this.style.display = 'none';
             otroInput.style.display = 'block';
+            btnVolver.style.display = 'inline-block';
             otroInput.focus();
         } else {
-            select.style.display = 'block';
+            this.style.display = 'block';
             otroInput.style.display = 'none';
+            btnVolver.style.display = 'none';
         }
     });
 });
 
-// Ajustar tamaño del canvas al tamaño real en pantalla
+document.querySelectorAll('.btn-volver-marca').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const parent = this.parentElement;
+        const select = parent.querySelector('.marca-select');
+        const otroInput = parent.querySelector('.marca-otro');
+        select.value = '';
+        select.style.display = 'block';
+        otroInput.style.display = 'none';
+        otroInput.value = '';
+        this.style.display = 'none';
+    });
+});
+
+// Ajustar tamaño del canvas
 function ajustarCanvas(canvas) {
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
     canvas.width = canvas.offsetWidth * ratio;
@@ -112,7 +128,7 @@ function generarPDF() {
         placeholder2.appendChild(img);
     }
 
-    // Sustituir selects de marca por spans de texto plano
+    // Sustituir selects y botones volver por spans de texto plano
     const selectsInfo = [];
     document.querySelectorAll('.marca-select').forEach(select => {
         const valor = select.value === 'Otro'
@@ -126,6 +142,8 @@ function generarPDF() {
         select.style.display = 'none';
         const otroInput = select.parentElement.querySelector('.marca-otro');
         if (otroInput) otroInput.style.display = 'none';
+        const btnVolver = select.parentElement.querySelector('.btn-volver-marca');
+        if (btnVolver) btnVolver.style.display = 'none';
     });
 
     canvasAreaTI.style.display = 'none';
@@ -146,7 +164,11 @@ function generarPDF() {
         selectsInfo.forEach(({ select, span }) => {
             select.style.display = '';
             const otroInput = select.parentElement.querySelector('.marca-otro');
-            if (otroInput && select.value === 'Otro') otroInput.style.display = 'block';
+            const btnVolver = select.parentElement.querySelector('.btn-volver-marca');
+            if (select.value === 'Otro') {
+                if (otroInput) otroInput.style.display = 'block';
+                if (btnVolver) btnVolver.style.display = 'inline-block';
+            }
             select.parentElement.removeChild(span);
         });
 
