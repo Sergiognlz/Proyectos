@@ -7,14 +7,15 @@ body {
 .container {
     background-color: #ffffff;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: none;
     max-width: 900px;
 }
 /* CABECERA */
 .cabecera {
     border-bottom: 3px solid #007A33;
     padding-bottom: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    padding-top: 15px;
     display: flex;
     justify-content: center;
 }
@@ -65,17 +66,24 @@ body {
 }
 
 /* TÍTULO FORMULARIO */
+
 .titulo-formulario {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .titulo-formulario h4 {
     color: #007A33;
     font-weight: bold;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+
 
 /* SECCIONES */
 .seccion {

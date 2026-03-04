@@ -180,35 +180,58 @@ function generarPDF() {
         btnLimpiarOtra.style.display = '';
         boton.style.display = '';
 
+        // Recortar canvas para eliminar espacio en blanco
+        const ctx = canvas.getContext('2d');
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        let lastRow = 0;
+        for (let y = canvas.height - 1; y >= 0; y--) {
+            let rowEmpty = true;
+            for (let x = 0; x < canvas.width; x++) {
+                const idx = (y * canvas.width + x) * 4;
+                const r = pixels[idx], g = pixels[idx+1], b = pixels[idx+2];
+                if (r < 250 || g < 250 || b < 250) {
+                    rowEmpty = false;
+                    break;
+                }
+            }
+            if (!rowEmpty) { lastRow = y + 20; break; }
+        }
+
+        const canvasRecortado = document.createElement('canvas');
+        canvasRecortado.width = canvas.width;
+        canvasRecortado.height = lastRow;
+        canvasRecortado.getContext('2d').drawImage(canvas, 0, 0);
+
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF('p', 'mm', 'a4');
 
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
-        const pdfHeight = (canvas.height * pageWidth) / canvas.width;
+        const pdfHeight = (canvasRecortado.height * pageWidth) / canvasRecortado.width;
 
         if (pdfHeight <= pageHeight) {
-            doc.addImage(canvas.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, pdfHeight);
+            doc.addImage(canvasRecortado.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, pdfHeight);
         } else {
-            const escala = pageWidth / canvas.width;
+            const escala = pageWidth / canvasRecortado.width;
             const alturaCorte = Math.floor(pageHeight / escala);
             let posicion = 0;
             let primeraPagina = true;
 
-            while (posicion < canvas.height) {
-                const alturaTrozo = Math.min(alturaCorte, canvas.height - posicion);
+            while (posicion < canvasRecortado.height) {
+                const alturaTrozo = Math.min(alturaCorte, canvasRecortado.height - posicion);
                 if (alturaTrozo <= 0) break;
 
                 const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = canvas.width;
+                tempCanvas.width = canvasRecortado.width;
                 tempCanvas.height = alturaTrozo;
-                const ctx = tempCanvas.getContext('2d');
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-                ctx.drawImage(canvas, 0, posicion, canvas.width, alturaTrozo, 0, 0, canvas.width, alturaTrozo);
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCtx.fillStyle = '#ffffff';
+                tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                tempCtx.drawImage(canvasRecortado, 0, posicion, canvasRecortado.width, alturaTrozo, 0, 0, canvasRecortado.width, alturaTrozo);
 
                 if (!primeraPagina) doc.addPage();
-                doc.addImage(tempCanvas.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, (alturaTrozo * pageWidth) / canvas.width);
+                doc.addImage(tempCanvas.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, (alturaTrozo * pageWidth) / canvasRecortado.width);
 
                 posicion += alturaTrozo;
                 primeraPagina = false;
