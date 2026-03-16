@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compromiso de Responsabilidad - SANDETEL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.5/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+  <div class="container mt-3 mb-0" id="documentoCompleto">
+
+        <!-- CABECERA -->
+        <div class="cabecera mt-3">
+            <img src="logo_sandetel.png" alt="Junta de Andalucía - SANDETEL" class="cabecera-logo-completo">
+        </div>
+
+        <!-- TÍTULO -->
+        <div class="titulo-documento">
+            <h4>Compromiso de Responsabilidad en la Cesión y Uso de Material TIC Titularidad de Sociedad Andaluza para el Desarrollo de las Telecomunicaciones, S.A.</h4>
+        </div>
+
+        <!-- CUERPO -->
+<div class="texto-documento">
+    <div style="padding: 0 50px;">
+
+        <p class="mt-3">Yo,</p>
+        <input type="text" class="campo-linea-completa mb-2" id="nombreUsuario" placeholder="">
+
+        <p>
+            con DNI&nbsp;
+            <input type="text" id="dniUsuario" class="campo-inline" style="width:160px;">
+            &nbsp;declaro haber recibido la cesión del siguiente terminal/dispositivo móvil titularidad de SOCIEDAD ANDALUZA PARA EL DESARROLLO DE LAS TELECOMUNICACIONES, S.A. para su uso como apoyo a mis funciones y tareas en la empresa:
+        </p>
+
+        <div class="linea-campo">
+            <label>Marca:</label>
+            <select class="marca-select">
+                <option value=""></option>
+                <option value="Samsung">Samsung</option>
+                <option value="Apple">Apple</option>
+                <option value="Motorola">Motorola</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <input type="text" class="marca-otro" placeholder="Especificar..." style="display:none !important; flex:1;">
+            <button type="button" class="btn-volver-marca" style="display:none; font-size:11px; color:#007A33; border:none; background:none; cursor:pointer; text-decoration:underline;">← Volver</button>
+        </div>
+
+        <div class="linea-campo">
+            <label>Modelo:</label>
+            <input type="text" id="modelo">
+        </div>
+
+        <div class="linea-campo">
+            <label>Código de IMEI:</label>
+            <input type="text" id="imei">
+        </div>
+
+        <div class="linea-campo">
+            <label>Fecha de Entrega:</label>
+            <input type="date" id="fechaEntrega">
+        </div>
+
+        <div class="texto-legal-compromiso mt-4">
+            <p>Como consecuencia de lo anteriormente expuesto, declaro ser responsable del uso que se da a dicho terminal/dispositivo y de comunicar a la empresa cualquier circunstancia o riesgo que pueda implicar el uso inadecuado del mismo o la pérdida de cualquier información sensible, mía propia o de la empresa.</p>
+            <p>Así mismo me comprometo a cumplir la normativa existente que aplica:</p>
+            <p>-Resolución de 22 de octubre de 2020, de la Secretaría General para la Administración Pública, por la que se aprueba el Código de Conducta en el uso de las Tecnologías de la Información y la Comunicación para profesionales públicos de la Administración de la Junta de Andalucía. (BOJA20-208-00009-12587-01_00179877)</p>
+            <p>-PL-26 Edic. 0 - Política de protección de datos de SANDETEL.</p>
+            <p>-PL-022-2 - Dotación informática y equipamiento del puesto de trabajo de SANDETEL.</p>
+            <p>-PL-025-3 - Política de seguridad TIC de SANDETEL.</p>
+        </div>
+
+        <!-- FECHA DE FIRMA -->
+            <div class="mt-5 text-center">
+            <span>En&nbsp;</span>
+            <input type="text" class="campo-inline" id="ciudad" style="width:150px;">
+            <span>, a&nbsp;</span>
+            <input type="text" class="campo-inline" id="dia" style="width:40px;">
+            <span>&nbsp;de&nbsp;</span>
+            <input type="text" class="campo-inline" id="mes" style="width:100px;">
+            <span>&nbsp;de 20</span>
+            <input type="text" class="campo-inline" id="anio" style="width:50px;">
+        </div>
+
+        <!-- FIRMA -->
+        <div class="mt-5 mb-3">
+            <p class="mb-1"><strong>Firma</strong></p>
+            <p class="mb-0">Usuario:</p>
+            <canvas id="firmaUsuario" class="firma-canvas mt-2"></canvas>
+            <br>
+            <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="btnLimpiarFirma" onclick="limpiarFirma()">Limpiar</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- BOTÓN -->
+<div class="text-center my-3" id="botonPDF">
+    <button type="button" class="btn btn-primary btn-lg" onclick="generarPDF()">Generar y Descargar PDF</button>
+</div>
+</div><!-- cierre container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
