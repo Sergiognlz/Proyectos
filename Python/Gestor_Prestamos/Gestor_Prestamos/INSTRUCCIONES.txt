@@ -1,0 +1,117 @@
+===============================================================================
+  GESTOR DE DOCUMENTOS — EQUIPAMIENTO EN PRÉSTAMO
+  Departamento de Tecnología e Información — JATII
+===============================================================================
+
+CONTENIDO DEL PAQUETE
+----------------------
+  gestor_prestamos.exe   → Aplicación principal
+  progreso.json          → Registro interno de operaciones (se crea automáticamente)
+  INSTRUCCIONES.txt      → Este archivo
+
+-------------------------------------------------------------------------------
+⚠  IMPORTANTE — LEE ANTES DE USAR
+-------------------------------------------------------------------------------
+El archivo gestor_prestamos.exe y el archivo progreso.json deben estar SIEMPRE
+en la misma carpeta. Si mueves el .exe a otra ubicación sin llevarte el
+progreso.json, la aplicación perderá el historial de archivos ya procesados.
+
+Carpeta recomendada:
+  C:\Herramientas\GestorPrestamos\
+      gestor_prestamos.exe
+      progreso.json
+      INSTRUCCIONES.txt
+
+NO coloques el ejecutable en el Escritorio, en Descargas ni en carpetas
+temporales. Crea una carpeta fija y mantenlo siempre ahí.
+
+-------------------------------------------------------------------------------
+INSTALACIÓN
+-------------------------------------------------------------------------------
+1. Descomprime el ZIP en una carpeta fija de tu PC (ver recomendación arriba).
+2. Doble clic en gestor_prestamos.exe para arrancar.
+3. No necesitas instalar Python ni ningún otro programa.
+
+-------------------------------------------------------------------------------
+USO — FASE 1: COPIAR A PRÉSTAMOS
+-------------------------------------------------------------------------------
+Esta fase detecta todos los PDFs de la carpeta de origen que contengan
+alguna variante de "Préstamo" en el nombre y los copia a la carpeta Préstamos.
+
+  Carpeta origen:
+    \\archivo.intcdm.sandetel.int\...\Entrega, recogida o cesión
+
+  Carpeta destino:
+    \\archivo.intcdm.sandetel.int\...\Préstamos
+
+Pasos:
+  1. Abre la aplicación (pestaña ① activa por defecto).
+  2. Pulsa "Buscar archivos" — la tabla mostrará los PDFs pendientes de copiar.
+  3. Revisa la lista. Los marcados con ⚠ serán renombrados para evitar
+     duplicados (el nombre original no cambia en origen).
+  4. Pulsa "Copiar archivos →" para iniciar el proceso.
+  5. El log de actividad muestra el progreso en tiempo real.
+
+Notas importantes:
+  - Los archivos originales NO se borran. La copia es completamente segura.
+  - Si la aplicación se interrumpe (corte de red, cierre accidental), vuelve
+    a abrirla y pulsa "Buscar archivos". Retomará desde donde se quedó.
+  - Si no aparecen archivos es que todos están ya copiados. Correcto.
+  - La detección de variantes incluye: Prestamo, Préstamo, Entrega_Prestamo,
+    Recogida_Prestamo y combinaciones con espacios o guiones bajos.
+
+-------------------------------------------------------------------------------
+USO — FASE 2: ARCHIVAR DEVUELTOS
+-------------------------------------------------------------------------------
+Esta fase permite mover a la carpeta Archivado! los préstamos ya cerrados
+(equipos devueltos). Se usa cuando un préstamo finaliza.
+
+  Carpeta origen:
+    \\archivo.intcdm.sandetel.int\...\Préstamos
+
+  Carpeta destino:
+    \\archivo.intcdm.sandetel.int\...\Préstamos\Archivado!
+
+Pasos:
+  1. Haz clic en la pestaña "② Archivar devueltos".
+  2. Pulsa "Buscar archivos" — aparecerán todos los PDFs en la carpeta Préstamos.
+  3. Usa el campo "Buscar" para filtrar por nombre (p.ej. el DNI o apellido).
+  4. Selecciona los archivos a archivar:
+       - Clic simple para seleccionar uno.
+       - Ctrl + clic para añadir más a la selección.
+       - Botón "Seleccionar todo" para marcar todos los visibles.
+  5. Pulsa "Archivar seleccionados →".
+  6. Confirma la operación en el diálogo de seguridad.
+
+Notas importantes:
+  - Esta operación MUEVE los archivos (no copia). Una vez archivados,
+    ya no aparecerán en la carpeta Préstamos.
+  - Esta acción no se puede deshacer desde la aplicación. Si necesitas
+    recuperar un archivo, búscalo manualmente en la carpeta Archivado!.
+  - El filtro de búsqueda actúa sobre los archivos visibles. Puedes filtrar
+    primero y luego usar "Seleccionar todo" para archivar un grupo completo.
+
+-------------------------------------------------------------------------------
+QUÉ HACER SI ALGO FALLA
+-------------------------------------------------------------------------------
+  - Si aparece un error en el log (texto en rojo), cierra y vuelve a abrir
+    la aplicación. Pulsa "Buscar archivos" y el proceso continuará desde
+    donde se quedó sin repetir lo ya procesado.
+
+  - Si crees que un archivo debería aparecer y no aparece en la Fase 1,
+    comprueba que ya existe en la carpeta Préstamos — si es así, está
+    correctamente copiado.
+
+  - Si la aplicación no arranca, asegúrate de que estás ejecutando el .exe
+    desde su carpeta original (no desde una copia en otra ubicación).
+
+  - Para cualquier incidencia técnica, contacta con el departamento JATII.
+
+-------------------------------------------------------------------------------
+VERSIÓN Y SOPORTE
+-------------------------------------------------------------------------------
+  Versión:      1.0
+  Desarrollado: Departamento JATII — Tecnología e Información
+  Fecha:        Marzo 2026
+
+===============================================================================
