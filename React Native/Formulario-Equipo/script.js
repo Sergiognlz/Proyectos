@@ -238,7 +238,33 @@ function generarPDF() {
             }
         }
 
-        doc.save('formulario_equipamiento.pdf');
+        // Determinar qué persona es la protagonista según la operación
+const operacion = getRadioValue('operacion') || 'SinOperacion';
+
+const esPrestamo = document.getElementById('modPrestamo').checked;
+
+const esEntrega = operacion === 'Entrega';
+const dniId    = esEntrega ? 'recDNI'    : 'entDNI';
+const nombreId = esEntrega ? 'recNombre' : 'entNombre';
+
+const dni = document.getElementById(dniId).value.trim() || 'SinDNI';
+
+const nombreCompleto = document.getElementById(nombreId).value.trim();
+const partes = nombreCompleto.split(/\s+/);
+const inicialNombre = partes[0] ? partes[0][0].toUpperCase() : '';
+const apellido = partes[1] ? partes[1] : '';
+const nombreArchivo = (inicialNombre + apellido) || 'SinNombre';
+
+const fechaRaw = document.getElementById('fecha').value; // YYYY-MM-DD
+const fechaFormateada = fechaRaw
+    ? fechaRaw.split('-').reverse().join('') // → DDMMYYYY
+    : 'SinFecha';
+
+const partesPrestamo = esPrestamo ? ['Prestamo'] : [];
+const segmentos = [dni, nombreArchivo, operacion, ...partesPrestamo, fechaFormateada];
+const nombreFinal = segmentos.join('_') + '.pdf';
+
+doc.save(nombreFinal);
 
     }).catch(err => {
         console.error('Error al generar PDF:', err);
