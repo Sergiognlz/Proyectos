@@ -355,9 +355,11 @@ function generarPDF() {
     doc.rect(M,          y, firmaW, firmaH);
     doc.rect(M+firmaW+6, y, firmaW, firmaH);
 
-    // Insertar firmas preservando aspect ratio
-    const insertarFirma = (dataURL, srcCanvas, fx, fy, fw, fh) => {
-        const ratio = srcCanvas.width / srcCanvas.height;
+    // Insertar firmas preservando aspect ratio lógico (100px alto fijo)
+    const insertarFirma = (dataURL, fx, fy, fw, fh) => {
+        const logicW = fw * 3; // ancho lógico aproximado del canvas
+        const logicH = 100;    // alto lógico fijo (definido en ajustarCanvas)
+        const ratio = logicW / logicH;
         let iw = fw * 0.85, ih = iw / ratio;
         if (ih > fh * 0.85) { ih = fh * 0.85; iw = ih * ratio; }
         const ix = fx + (fw - iw) / 2;
@@ -366,9 +368,9 @@ function generarPDF() {
     };
 
     if (!firmaTI.isEmpty())
-        insertarFirma(firmaTI.toDataURL('image/png'),    canvasAreaTI,    M+1,        y+1, firmaW-2, firmaH-2);
+        insertarFirma(firmaTI.toDataURL('image/png'),   M+1,        y+1, firmaW-2, firmaH-2);
     if (!firmaOtra.isEmpty())
-        insertarFirma(firmaOtra.toDataURL('image/png'),  canvasOtraParte, M+firmaW+7, y+1, firmaW-2, firmaH-2);
+        insertarFirma(firmaOtra.toDataURL('image/png'), M+firmaW+7, y+1, firmaW-2, firmaH-2);
 
     // ==============================
     // NOMBRE ARCHIVO
