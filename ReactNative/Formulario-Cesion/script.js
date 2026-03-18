@@ -120,7 +120,7 @@ function generarPDF() {
     const tituloH = tituloLines.length * 5;
     doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
     doc.line(M + W*0.1, y + tituloH - 1, M + W*0.9, y + tituloH - 1);
-    y += tituloH + 8;
+    y += tituloH + 14;
 
     // ==============================
     // CUERPO: "Yo,"
@@ -248,24 +248,26 @@ function generarPDF() {
     // ==============================
     // FIRMA
     // ==============================
-    const firmaW = W / 2;
-    const firmaH = 25;
+    const firmaW = W * 0.6;
+    const firmaX = M + (W - firmaW) / 2;
+    const espacioRestante = PH - M - y - 10;
+    const firmaH = Math.min(Math.max(espacioRestante - 12, 25), 40);
 
-    doc.setFontSize(8.5); doc.setFont('helvetica','bold');
-    doc.text('Firma', M, y);
+    doc.setFontSize(8.5); doc.setFont('helvetica','bold'); doc.setTextColor(0,0,0);
+    doc.text('Firma', firmaX + firmaW/2, y, {align:'center'});
     y += 4;
     doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
-    doc.text('Usuario:', M, y);
+    doc.text('Usuario:', firmaX + firmaW/2, y, {align:'center'});
     y += 3;
 
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
-    doc.rect(M, y, firmaW, firmaH);
+    doc.rect(firmaX, y, firmaW, firmaH);
 
     if (!firmaUsuario.isEmpty()) {
         const ratio = (canvasFirma.offsetWidth || 400) / 150;
-        let iw = firmaW * 0.85, ih = iw / ratio;
-        if (ih > firmaH * 0.85) { ih = firmaH * 0.85; iw = ih * ratio; }
-        const ix = M + (firmaW - iw) / 2;
+        let iw = firmaW * 0.80, ih = iw / ratio;
+        if (ih > firmaH * 0.80) { ih = firmaH * 0.80; iw = ih * ratio; }
+        const ix = firmaX + (firmaW - iw) / 2;
         const iy = y + (firmaH - ih) / 2;
         doc.addImage(firmaUsuario.toDataURL('image/png'), 'PNG', ix, iy, iw, ih);
     }
