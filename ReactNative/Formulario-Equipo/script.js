@@ -154,7 +154,7 @@ function generarPDF() {
     btnLimpiarOtra.style.display = 'none';
     boton.style.display = 'none';
 
-    html2canvas(elemento, {
+   html2canvas(elemento, {
     scale: 2,
     useCORS: true,
     logging: false,
@@ -185,44 +185,15 @@ function generarPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
 
-    const pageWidth  = doc.internal.pageSize.getWidth();   // 210mm
-    const pageHeight = doc.internal.pageSize.getHeight();  // 297mm
-    const margin = 5; // mm de margen a cada lado
+    const pageWidth  = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 5;
 
-    const imgWidth  = pageWidth - margin * 2;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    const imgWidth    = pageWidth - margin * 2;
+    const imgHeight   = (canvas.height * imgWidth) / canvas.width;
+    const alturaFinal = Math.min(imgHeight, pageHeight - margin * 2);
 
-    if (imgHeight <= pageHeight - margin * 2) {
-        // Cabe en una sola página: centrar verticalmente
-        const yOffset = margin;
-        doc.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, yOffset, imgWidth, imgHeight);
-    } else {
-        // Más de una página: paginar limpiamente
-        const escala = imgWidth / canvas.width;
-        const alturaCorte = Math.floor((pageHeight - margin * 2) / escala);
-        let posicion = 0;
-        let primeraPagina = true;
-
-        while (posicion < canvas.height) {
-            const alturaTrozo = Math.min(alturaCorte, canvas.height - posicion);
-            if (alturaTrozo <= 0) break;
-
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width  = canvas.width;
-            tempCanvas.height = alturaTrozo;
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.fillStyle = '#ffffff';
-            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-            tempCtx.drawImage(canvas, 0, posicion, canvas.width, alturaTrozo, 0, 0, canvas.width, alturaTrozo);
-
-            if (!primeraPagina) doc.addPage();
-            const trozoAlturaMM = (alturaTrozo * imgWidth) / canvas.width;
-            doc.addImage(tempCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, imgWidth, trozoAlturaMM);
-
-            posicion += alturaTrozo;
-            primeraPagina = false;
-        }
-    }
+    doc.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, imgWidth, alturaFinal);
 
     // Nombre del archivo
     const operacion = getRadioValue('operacion') || 'SinOperacion';
