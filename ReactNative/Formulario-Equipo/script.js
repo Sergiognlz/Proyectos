@@ -104,31 +104,11 @@ function generarPDF() {
     const btnLimpiarTI = document.getElementById('btnLimpiarTI');
     const btnLimpiarOtra = document.getElementById('btnLimpiarOtra');
 
-    const firmaTIData = !firmaTI.isEmpty() ? firmaTI.toDataURL('image/png') : null;
-    const firmaOtraData = !firmaOtra.isEmpty() ? firmaOtra.toDataURL('image/png') : null;
+    // Guardar datos de firmas
+    const firmaTIData    = !firmaTI.isEmpty()    ? firmaTI.toDataURL('image/png')    : null;
+    const firmaOtraData  = !firmaOtra.isEmpty()  ? firmaOtra.toDataURL('image/png')  : null;
 
-    const canvasWrapper1 = canvasAreaTI.parentElement;
-    const canvasWrapper2 = canvasOtraParte.parentElement;
-
-    const placeholder1 = document.createElement('div');
-    placeholder1.style.cssText = 'width:100%; height:100px; border:1px solid #007A33; background:#fff; display:block;';
-    if (firmaTIData) {
-        const img = document.createElement('img');
-        img.src = firmaTIData;
-        img.style.cssText = 'width:100%; height:100px; object-fit:contain;';
-        placeholder1.appendChild(img);
-    }
-
-    const placeholder2 = document.createElement('div');
-    placeholder2.style.cssText = 'width:100%; height:100px; border:1px solid #007A33; background:#fff; display:block;';
-    if (firmaOtraData) {
-        const img = document.createElement('img');
-        img.src = firmaOtraData;
-        img.style.cssText = 'width:100%; height:100px; object-fit:contain;';
-        placeholder2.appendChild(img);
-    }
-
-    // Sustituir selects y botones volver por spans de texto plano
+    // Sustituir selects por spans de texto plano
     const selectsInfo = [];
     document.querySelectorAll('.marca-select').forEach(select => {
         const valor = select.value === 'Otro'
@@ -146,6 +126,25 @@ function generarPDF() {
         if (btnVolver) btnVolver.style.display = 'none';
     });
 
+    // Sustituir canvas de firma por imágenes estáticas
+    const canvasWrapper1 = canvasAreaTI.parentElement;
+    const canvasWrapper2 = canvasOtraParte.parentElement;
+
+    const makeImgDiv = (dataURL) => {
+        const div = document.createElement('div');
+        div.style.cssText = 'width:100%; height:100px; border:1px solid #007A33; background:#fff; display:block;';
+        if (dataURL) {
+            const img = document.createElement('img');
+            img.src = dataURL;
+            img.style.cssText = 'width:100%; height:100px; object-fit:contain;';
+            div.appendChild(img);
+        }
+        return div;
+    };
+
+    const placeholder1 = makeImgDiv(firmaTIData);
+    const placeholder2 = makeImgDiv(firmaOtraData);
+
     canvasAreaTI.style.display = 'none';
     canvasOtraParte.style.display = 'none';
     canvasWrapper1.insertBefore(placeholder1, canvasAreaTI);
@@ -154,77 +153,87 @@ function generarPDF() {
     btnLimpiarOtra.style.display = 'none';
     boton.style.display = 'none';
 
-   html2canvas(elemento, {
-    scale: 2,
-    useCORS: true,
-    logging: false,
-    backgroundColor: '#ffffff',
-    windowWidth: elemento.scrollWidth,
-    windowHeight: elemento.scrollHeight
-}).then(canvas => {
-    // Restaurar selects
-    selectsInfo.forEach(({ select, span }) => {
-        select.style.display = '';
-        const otroInput = select.parentElement.querySelector('.marca-otro');
-        const btnVolver = select.parentElement.querySelector('.btn-volver-marca');
-        if (select.value === 'Otro') {
-            if (otroInput) otroInput.style.display = 'block';
-            if (btnVolver) btnVolver.style.display = 'inline-block';
-        }
-        select.parentElement.removeChild(span);
+    // Forzar ancho fijo para captura consistente
+    const anchoOriginal = elemento.style.width;
+    elemento.style.width = '900px';
+
+    html2canvas(elemento, {
+        scale: 1.5,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        width: 900,
+        windowWidth: 900
+    }).then(canvas => {
+
+        // --- Restaurar todo ---
+        elemento.style.width = anchoOriginal;
+
+        selectsInfo.forEach(({ select, span }) => {
+            select.style.display = '';
+            const otroInput = select.parentElement.querySelector('.marca-otro');
+            const btnVolver = select.parentElement.querySelector('.btn-volver-marca');
+            if (select.value === 'Otro') {
+                if (otroInput) otroInput.style.display = 'block';
+                if (btnVolver) btnVolver.style.display = 'inline-block';
+            }
+            select.parentElement.removeChild(span);
+        });
+
+        canvasAreaTI.style.display = 'block';
+        canvasOtraParte.style.display = 'block';
+        canvasWrapper1.removeChild(placeholder1);
+        canvasWrapper2.removeChild(placeholder2);
+        btnLimpiarTI.style.display = '';
+        btnLimpiarOtra.style.display = '';
+        boton.style.display = '';
+
+        // --- Generar PDF en una sola página ---
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+
+        const pageWidth  = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 5;
+
+        const imgWidth    = pageWidth - margin * 2;
+        const imgHeight   = (canvas.height * imgWidth) / canvas.width;
+        const alturaFinal = Math.min(imgHeight, pageHeight - margin * 2);
+
+        doc.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, imgWidth, alturaFinal);
+
+        // --- Nombre del archivo ---
+        const operacion = getRadioValue('operacion') || 'SinOperacion';
+        const esPrestamo = document.getElementById('modPrestamo').checked;
+        const esEntrega  = operacion === 'Entrega';
+        const dniId      = esEntrega ? 'recDNI'    : 'entDNI';
+        const nombreId   = esEntrega ? 'recNombre' : 'entNombre';
+        const dni        = document.getElementById(dniId).value.trim() || 'SinDNI';
+        const nombreCompleto = document.getElementById(nombreId).value.trim();
+        const partes     = nombreCompleto.split(/\s+/);
+        const inicialNombre = partes[0] ? partes[0][0].toUpperCase() : '';
+        const apellido   = partes[1] ? partes[1] : '';
+        const nombreArchivo = (inicialNombre + apellido) || 'SinNombre';
+        const fechaRaw   = document.getElementById('fecha').value;
+        const fechaFormateada = fechaRaw ? fechaRaw.split('-').reverse().join('') : 'SinFecha';
+        const partesPrestamo = esPrestamo ? ['Prestamo'] : [];
+        const segmentos  = [dni, nombreArchivo, operacion, ...partesPrestamo, fechaFormateada];
+        doc.save(segmentos.join('_') + '.pdf');
+
+    }).catch(err => {
+        console.error('Error al generar PDF:', err);
+
+        elemento.style.width = anchoOriginal;
+        selectsInfo.forEach(({ select, span }) => {
+            select.style.display = '';
+            select.parentElement.removeChild(span);
+        });
+        canvasAreaTI.style.display = 'block';
+        canvasOtraParte.style.display = 'block';
+        canvasWrapper1.removeChild(placeholder1);
+        canvasWrapper2.removeChild(placeholder2);
+        btnLimpiarTI.style.display = '';
+        btnLimpiarOtra.style.display = '';
+        boton.style.display = '';
     });
-
-    canvasAreaTI.style.display = 'block';
-    canvasOtraParte.style.display = 'block';
-    canvasWrapper1.removeChild(placeholder1);
-    canvasWrapper2.removeChild(placeholder2);
-    btnLimpiarTI.style.display = '';
-    btnLimpiarOtra.style.display = '';
-    boton.style.display = '';
-
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('p', 'mm', 'a4');
-
-    const pageWidth  = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 5;
-
-    const imgWidth    = pageWidth - margin * 2;
-    const imgHeight   = (canvas.height * imgWidth) / canvas.width;
-    const alturaFinal = Math.min(imgHeight, pageHeight - margin * 2);
-
-    doc.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, imgWidth, alturaFinal);
-
-    // Nombre del archivo
-    const operacion = getRadioValue('operacion') || 'SinOperacion';
-    const esPrestamo = document.getElementById('modPrestamo').checked;
-    const esEntrega  = operacion === 'Entrega';
-    const dniId      = esEntrega ? 'recDNI'    : 'entDNI';
-    const nombreId   = esEntrega ? 'recNombre' : 'entNombre';
-    const dni        = document.getElementById(dniId).value.trim() || 'SinDNI';
-    const nombreCompleto = document.getElementById(nombreId).value.trim();
-    const partes     = nombreCompleto.split(/\s+/);
-    const inicialNombre = partes[0] ? partes[0][0].toUpperCase() : '';
-    const apellido   = partes[1] ? partes[1] : '';
-    const nombreArchivo = (inicialNombre + apellido) || 'SinNombre';
-    const fechaRaw   = document.getElementById('fecha').value;
-    const fechaFormateada = fechaRaw ? fechaRaw.split('-').reverse().join('') : 'SinFecha';
-    const partesPrestamo = esPrestamo ? ['Prestamo'] : [];
-    const segmentos  = [dni, nombreArchivo, operacion, ...partesPrestamo, fechaFormateada];
-    doc.save(segmentos.join('_') + '.pdf');
-
-}).catch(err => {
-    console.error('Error al generar PDF:', err);
-    selectsInfo.forEach(({ select, span }) => {
-        select.style.display = '';
-        select.parentElement.removeChild(span);
-    });
-    canvasAreaTI.style.display = 'block';
-    canvasOtraParte.style.display = 'block';
-    canvasWrapper1.removeChild(placeholder1);
-    canvasWrapper2.removeChild(placeholder2);
-    btnLimpiarTI.style.display = '';
-    btnLimpiarOtra.style.display = '';
-    boton.style.display = '';
-});
 }
