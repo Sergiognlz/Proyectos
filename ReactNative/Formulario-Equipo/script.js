@@ -243,10 +243,10 @@ function generarPDF() {
     ex = drawRadio(doc, 'Proveedor',     tipoEntrega==='Proveedor',     ex, sy);
     sy += 5;
 
-    drawCampo(doc, 'Nombre',   document.getElementById('entNombre').value,  M,        sy, hW);
+    drawCampo(doc, 'Nombre',   document.getElementById('entNombre').value,  M+0.5,    sy, hW-0.5);
     drawCampo(doc, 'DNI',      document.getElementById('entDNI').value,     M+hW+1,   sy, hW);
     sy += 9.7;
-    drawCampo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M,        sy, hW);
+    drawCampo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M+0.5,    sy, hW-0.5);
     drawCampo(doc, 'Teléfono', document.getElementById('entTelf').value,    M+hW+1,   sy, hW);
     y += s2H + 1.5;
 
@@ -267,10 +267,10 @@ function generarPDF() {
     rx2 = drawRadio(doc, 'Proveedor',     tipoRecoge==='Proveedor',     rx2, sy);
     sy += 5;
 
-    drawCampo(doc, 'Nombre',   document.getElementById('recNombre').value,  M,        sy, hW);
+    drawCampo(doc, 'Nombre',   document.getElementById('recNombre').value,  M+0.5,    sy, hW-0.5);
     drawCampo(doc, 'DNI',      document.getElementById('recDNI').value,     M+hW+1,   sy, hW);
     sy += 9.7;
-    drawCampo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M,        sy, hW);
+    drawCampo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M+0.5,    sy, hW-0.5);
     drawCampo(doc, 'Teléfono', document.getElementById('recTelf').value,    M+hW+1,   sy, hW);
     y += s3H + 1.5;
 
@@ -355,24 +355,20 @@ function generarPDF() {
     doc.rect(M,          y, firmaW, firmaH);
     doc.rect(M+firmaW+6, y, firmaW, firmaH);
 
-    // Insertar firmas preservando aspect ratio del canvas original
-    const insertarFirma = (pad, dataURL, fx, fy, fw, fh) => {
-        const tmpImg = new Image();
-        tmpImg.src = dataURL;
-        const srcW = tmpImg.naturalWidth  || canvasAreaTI.width;
-        const srcH = tmpImg.naturalHeight || canvasAreaTI.height;
-        const ratio = srcW / srcH;
-        let iw = fw, ih = fw / ratio;
-        if (ih > fh) { ih = fh; iw = fh * ratio; }
+    // Insertar firmas preservando aspect ratio
+    const insertarFirma = (dataURL, srcCanvas, fx, fy, fw, fh) => {
+        const ratio = srcCanvas.width / srcCanvas.height;
+        let iw = fw * 0.85, ih = iw / ratio;
+        if (ih > fh * 0.85) { ih = fh * 0.85; iw = ih * ratio; }
         const ix = fx + (fw - iw) / 2;
         const iy = fy + (fh - ih) / 2;
         doc.addImage(dataURL, 'PNG', ix, iy, iw, ih);
     };
 
     if (!firmaTI.isEmpty())
-        insertarFirma(1, firmaTI.toDataURL('image/png'),   M+1,        y+1, firmaW-2, firmaH-2);
+        insertarFirma(firmaTI.toDataURL('image/png'),    canvasAreaTI,    M+1,        y+1, firmaW-2, firmaH-2);
     if (!firmaOtra.isEmpty())
-        insertarFirma(1, firmaOtra.toDataURL('image/png'), M+firmaW+7, y+1, firmaW-2, firmaH-2);
+        insertarFirma(firmaOtra.toDataURL('image/png'),  canvasOtraParte, M+firmaW+7, y+1, firmaW-2, firmaH-2);
 
     // ==============================
     // NOMBRE ARCHIVO
