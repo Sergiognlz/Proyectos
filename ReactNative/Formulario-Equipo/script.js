@@ -98,21 +98,19 @@ function drawSeccionHeader(doc, texto, x, y, w) {
 }
 
 function drawCampo(doc, label, valor, x, y, w) {
-    // Label pequeño encima
+    const pad = 1.5;
     doc.setFontSize(6);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(80, 80, 80);
-    doc.text(label, x + 0.5, y + 2.5);
-    // Rectángulo del campo
+    doc.text(label, x + pad, y + 2.5);
     doc.setDrawColor(180, 180, 180);
     doc.setLineWidth(0.2);
     doc.rect(x, y + 3.2, w, 5.5);
-    // Valor
     doc.setFontSize(7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(0, 0, 0);
-    doc.text(valor || '', x + 1, y + 3.2 + 4);
-    return y + 3.2 + 5.5 + 1; // siguiente y
+    doc.text(valor || '', x + pad, y + 3.2 + 4);
+    return y + 3.2 + 5.5 + 1;
 }
 
 function drawRadio(doc, label, marcado, x, y) {
@@ -357,10 +355,24 @@ function generarPDF() {
     doc.rect(M,          y, firmaW, firmaH);
     doc.rect(M+firmaW+6, y, firmaW, firmaH);
 
+    // Insertar firmas preservando aspect ratio del canvas original
+    const insertarFirma = (pad, dataURL, fx, fy, fw, fh) => {
+        const tmpImg = new Image();
+        tmpImg.src = dataURL;
+        const srcW = tmpImg.naturalWidth  || canvasAreaTI.width;
+        const srcH = tmpImg.naturalHeight || canvasAreaTI.height;
+        const ratio = srcW / srcH;
+        let iw = fw, ih = fw / ratio;
+        if (ih > fh) { ih = fh; iw = fh * ratio; }
+        const ix = fx + (fw - iw) / 2;
+        const iy = fy + (fh - ih) / 2;
+        doc.addImage(dataURL, 'PNG', ix, iy, iw, ih);
+    };
+
     if (!firmaTI.isEmpty())
-        doc.addImage(firmaTI.toDataURL('image/png'),   'PNG', M+1,        y+1, firmaW-2, firmaH-2);
+        insertarFirma(1, firmaTI.toDataURL('image/png'),   M+1,        y+1, firmaW-2, firmaH-2);
     if (!firmaOtra.isEmpty())
-        doc.addImage(firmaOtra.toDataURL('image/png'), 'PNG', M+firmaW+7, y+1, firmaW-2, firmaH-2);
+        insertarFirma(1, firmaOtra.toDataURL('image/png'), M+firmaW+7, y+1, firmaW-2, firmaH-2);
 
     // ==============================
     // NOMBRE ARCHIVO
