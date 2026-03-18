@@ -120,7 +120,7 @@ function generarPDF() {
     const tituloH = tituloLines.length * 5;
     doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
     doc.line(M + W*0.1, y + tituloH - 1, M + W*0.9, y + tituloH - 1);
-    y += tituloH + 14;
+    y += tituloH + 28;
 
     // ==============================
     // CUERPO: "Yo,"
@@ -233,42 +233,46 @@ function generarPDF() {
     y += legalH + 8;
 
     // ==============================
-    // FECHA DE FIRMA
+    // FECHA DE FIRMA — anclada al fondo
     // ==============================
     const ciudadVal = document.getElementById('ciudad').value.trim();
     const diaVal    = document.getElementById('dia').value.trim();
     const mesVal    = document.getElementById('mes').value.trim();
     const anioVal   = document.getElementById('anio').value.trim();
 
-    doc.setFontSize(FS); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
+    const firmaW  = W * 0.55;
+    const firmaX  = M + (W - firmaW) / 2;
+    const firmaH  = 38;
+    const labelH  = 10;
+    const fechaH  = 8;
+    // Todo anclado: fecha + label + firma + margen inferior
+    const bloqueY = PH - M - fechaH - labelH - firmaH - 2;
+
+    // Línea separadora
+    doc.setDrawColor(200,200,200); doc.setLineWidth(0.3);
+    doc.line(M, bloqueY - 5, M+W, bloqueY - 5);
+
+    // Fecha centrada
+    doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
     const fechaFirmaTexto = `En ${ciudadVal || '_______________'}, a ${diaVal || '__'} de ${mesVal || '___________'} de 20${anioVal || '__'}`;
-    doc.text(fechaFirmaTexto, PW/2, y, {align:'center'});
-    y += 10;
+    doc.text(fechaFirmaTexto, PW/2, bloqueY, {align:'center'});
 
-    // ==============================
-    // FIRMA
-    // ==============================
-    const firmaW = W * 0.6;
-    const firmaX = M + (W - firmaW) / 2;
-    const espacioRestante = PH - M - y - 10;
-    const firmaH = Math.min(Math.max(espacioRestante - 12, 25), 40);
+    // Etiqueta firma
+    const yLabel = bloqueY + fechaH;
+    doc.setFontSize(8.5); doc.setFont('helvetica','bold');
+    doc.text('Firma del usuario', firmaX + firmaW/2, yLabel, {align:'center'});
 
-    doc.setFontSize(8.5); doc.setFont('helvetica','bold'); doc.setTextColor(0,0,0);
-    doc.text('Firma', firmaX + firmaW/2, y, {align:'center'});
-    y += 4;
-    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
-    doc.text('Usuario:', firmaX + firmaW/2, y, {align:'center'});
-    y += 3;
-
-    doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
-    doc.rect(firmaX, y, firmaW, firmaH);
+    // Recuadro firma
+    const yFirma = yLabel + 3;
+    doc.setDrawColor(0,122,51); doc.setLineWidth(0.5);
+    doc.rect(firmaX, yFirma, firmaW, firmaH);
 
     if (!firmaUsuario.isEmpty()) {
         const ratio = (canvasFirma.offsetWidth || 400) / 150;
-        let iw = firmaW * 0.80, ih = iw / ratio;
-        if (ih > firmaH * 0.80) { ih = firmaH * 0.80; iw = ih * ratio; }
+        let iw = firmaW * 0.78, ih = iw / ratio;
+        if (ih > firmaH * 0.78) { ih = firmaH * 0.78; iw = ih * ratio; }
         const ix = firmaX + (firmaW - iw) / 2;
-        const iy = y + (firmaH - ih) / 2;
+        const iy = yFirma + (firmaH - ih) / 2;
         doc.addImage(firmaUsuario.toDataURL('image/png'), 'PNG', ix, iy, iw, ih);
     }
 
