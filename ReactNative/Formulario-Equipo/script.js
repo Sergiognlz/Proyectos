@@ -1,7 +1,6 @@
 // ---- INICIALIZAR SIGNATURE PAD ----
 const canvasAreaTI = document.getElementById('firmaAreaTI');
 const canvasOtraParte = document.getElementById('firmaOtraParte');
-
 const firmaTI = new SignaturePad(canvasAreaTI);
 const firmaOtra = new SignaturePad(canvasOtraParte);
 
@@ -48,7 +47,6 @@ function ajustarCanvas(canvas) {
     canvas.height = 100 * ratio;
     canvas.getContext('2d').scale(ratio, ratio);
 }
-
 canvasAreaTI.style.height = '100px';
 canvasOtraParte.style.height = '100px';
 ajustarCanvas(canvasAreaTI);
@@ -86,74 +84,69 @@ function getDatosTabla() {
 }
 
 // ---- HELPERS PDF ----
-function seccionTitulo(doc, texto, x, y, w, fs, bh) {
+function drawSeccionHeader(doc, texto, x, y, w) {
+    const h = 5;
     doc.setFillColor(0, 122, 51);
-    doc.rect(x, y, w, bh, 'F');
+    doc.rect(x, y, w, h, 'F');
     doc.setTextColor(255, 255, 255);
-    doc.setFontSize(fs);
+    doc.setFontSize(7.5);
     doc.setFont('helvetica', 'bold');
-    doc.text(texto, x + 1.5, y + bh * 0.72);
+    doc.text(texto, x + 2, y + h * 0.72);
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'normal');
+    return y + h;
 }
 
-function campo(doc, label, valor, x, y, w, labelFs, valFs, fh) {
-    doc.setFontSize(labelFs);
-    doc.setFont('helvetica', 'bold');
-    doc.text(label, x, y);
+function drawCampo(doc, label, valor, x, y, w) {
+    // Label pequeño encima
+    doc.setFontSize(6);
     doc.setFont('helvetica', 'normal');
+    doc.setTextColor(80, 80, 80);
+    doc.text(label, x + 0.5, y + 2.5);
+    // Rectángulo del campo
     doc.setDrawColor(180, 180, 180);
     doc.setLineWidth(0.2);
-    doc.rect(x, y + 0.8, w, fh);
-    doc.setFontSize(valFs);
-    doc.text(valor || '', x + 1, y + fh * 0.72 + 0.8);
-}
-
-function radio(doc, label, marcado, x, y, fs, r) {
-    doc.setDrawColor(80, 80, 80);
-    doc.setLineWidth(0.25);
-    doc.circle(x + r, y, r);
-    if (marcado) {
-        doc.setFillColor(0, 122, 51);
-        doc.circle(x + r, y, r * 0.55, 'F');
-        doc.setFillColor(255, 255, 255);
-    }
-    doc.setFontSize(fs);
+    doc.rect(x, y + 3.2, w, 5.5);
+    // Valor
+    doc.setFontSize(7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(0, 0, 0);
-    doc.text(label, x + r * 2 + 1, y + r * 0.7);
-    return x + r * 2 + 1 + doc.getTextWidth(label) + 2.5;
+    doc.text(valor || '', x + 1, y + 3.2 + 4);
+    return y + 3.2 + 5.5 + 1; // siguiente y
+}
+
+function drawRadio(doc, label, marcado, x, y) {
+    const r = 1.4;
+    doc.setDrawColor(100, 100, 100);
+    doc.setLineWidth(0.25);
+    doc.circle(x + r, y + r, r);
+    if (marcado) {
+        doc.setFillColor(0, 122, 51);
+        doc.circle(x + r, y + r, r * 0.55, 'F');
+        doc.setFillColor(255, 255, 255);
+    }
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(0, 0, 0);
+    doc.text(label, x + r * 2 + 1.5, y + r * 1.5);
+    return x + r * 2 + 1.5 + doc.getTextWidth(label) + 3;
 }
 
 // ---- GENERAR PDF ----
 function generarPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
-    const PW = doc.internal.pageSize.getWidth();   // 210
-    const PH = doc.internal.pageSize.getHeight();  // 297
-    const M = 7;
-    const W = PW - M * 2;  // 196
-
-    // Tamaños fijos calibrados para A4
-    const FS_LABEL  = 6.5;   // etiquetas de campo
-    const FS_VAL    = 7;     // valores de campo
-    const FS_RADIO  = 6.5;   // texto radio
-    const FS_SEC    = 7;     // título sección
-    const FS_LEGAL  = 5.2;   // texto legal
-    const FS_FIRMA  = 7.5;   // etiqueta firmas
-    const R_RADIO   = 1.3;   // radio del círculo
-    const BH        = 4.5;   // altura barra sección
-    const FH        = 5;     // altura campo input
-    const ROW_H     = 5.2;   // altura fila tabla
-    const GAP       = 1.2;   // espacio entre elementos
-
+    const PW = doc.internal.pageSize.getWidth();
+    const PH = doc.internal.pageSize.getHeight();
+    const M = 8;
+    const W = PW - M * 2;
     let y = M;
 
     // ==============================
-    // CABECERA
+    // CABECERA: logo izquierda
     // ==============================
     const logoImg = document.querySelector('.cabecera-logo-completo');
-    let logoOk = false;
+    let logoH = 0;
     if (logoImg && logoImg.complete && logoImg.naturalWidth > 0) {
         try {
             const tmp = document.createElement('canvas');
@@ -161,217 +154,216 @@ function generarPDF() {
             tmp.height = logoImg.naturalHeight;
             tmp.getContext('2d').drawImage(logoImg, 0, 0);
             const logoData = tmp.toDataURL('image/png');
-            const logoH = 10;
+            logoH = 9;
             const logoW = logoH * (logoImg.naturalWidth / logoImg.naturalHeight);
-            // Centrar logo
-            doc.addImage(logoData, 'PNG', PW/2 - logoW/2, y, logoW, logoH);
-            logoOk = true;
-            y += logoH + 2;
-        } catch(e) {}
+            doc.addImage(logoData, 'PNG', M, y, logoW, logoH);
+        } catch(e) {
+            doc.setFontSize(8); doc.setFont('helvetica','bold');
+            doc.setTextColor(0,122,51);
+            doc.text('Junta de Andalucía — SANDETEL', M, y+6);
+            doc.setTextColor(0,0,0);
+            logoH = 7;
+        }
     }
-    if (!logoOk) {
-        doc.setFontSize(9); doc.setFont('helvetica','bold');
-        doc.setTextColor(0,122,51);
-        doc.text('Junta de Andalucía — SANDETEL', PW/2, y+6, {align:'center'});
-        doc.setTextColor(0,0,0);
-        y += 9;
-    }
-    doc.setDrawColor(0,122,51); doc.setLineWidth(0.7);
+    y += logoH + 2;
+    doc.setDrawColor(0,122,51); doc.setLineWidth(0.6);
     doc.line(M, y, M+W, y);
-    y += 3.5;
+    y += 4;
 
     // ==============================
-    // TÍTULO
+    // TÍTULO centrado, subrayado
     // ==============================
-    doc.setFontSize(9.5); doc.setFont('helvetica','bold');
+    doc.setFontSize(10); doc.setFont('helvetica','bold');
     doc.setTextColor(0,122,51);
-    doc.text('Formulario de Entrega o Recogida de Equipamiento Informático', PW/2, y, {align:'center'});
+    const titulo = 'Formulario de Entrega o Recogida de Equipamiento Informático';
+    doc.text(titulo, PW/2, y, {align:'center'});
+    const tW = doc.getTextWidth(titulo);
+    doc.setLineWidth(0.3);
+    doc.line(PW/2 - tW/2, y+0.8, PW/2 + tW/2, y+0.8);
     doc.setTextColor(0,0,0);
-    y += 4.5;
+    y += 5;
 
-    // ==============================
-    // SECCIÓN 1: DATOS GENERALES
-    // ==============================
     const operacion = getRadioValue('operacion');
     const fechaRaw  = document.getElementById('fecha').value;
     const fechaMostrar = fechaRaw ? fechaRaw.split('-').reverse().join('/') : '';
     const modalidad = getRadioValue('modalidad');
 
-    const sec1Y = y;
+    // ==============================
+    // SECCIÓN 1
+    // ==============================
+    // Calcular altura sección 1
+    // barra + fila operacion/tique/fecha + fila modalidad + padding
+    const s1H = 5 + 2.5 + 3 + 9.7 + 2 + 3 + 3 + 2;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
-    // Altura: barra + operacion+radios + modalidad+radios + gap
-    const sec1H = BH + 3 + (FH+1.5) + 3 + (FH+1.5) + 2.5;
-    doc.rect(M, y, W, sec1H);
-    seccionTitulo(doc, '1. Datos Generales', M, y, W, FS_SEC, BH);
-    y += BH + 1.5;
+    doc.rect(M, y, W, s1H);
+    const afterSec1Header = drawSeccionHeader(doc, '1. Datos Generales', M, y, W);
+    let sy = afterSec1Header + 2;
 
-    // Fila: Operación | N.º Tique | Fecha
-    const col3 = W / 3;
-    doc.setFontSize(FS_LABEL); doc.setFont('helvetica','bold');
-    doc.text('Operación', M+1, y);
-    y += 2.8;
+    // Fila: Operación (col1) | N.º Tique (col2) | Fecha (col3)
+    const col3W = W / 3;
+    doc.setFontSize(6); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
+    doc.text('Operación', M+1, sy+2.5);
     let rx = M+1;
-    rx = radio(doc, 'Entrega',  operacion==='Entrega',  rx, y, FS_RADIO, R_RADIO);
-    rx = radio(doc, 'Recogida', operacion==='Recogida', rx, y, FS_RADIO, R_RADIO);
+    sy += 3.2;
+    rx = drawRadio(doc, 'Entrega',  operacion==='Entrega',  rx, sy);
+    rx = drawRadio(doc, 'Recogida', operacion==='Recogida', rx, sy);
 
-    campo(doc, 'N.º Tique', document.getElementById('nTique').value, M+col3+1,   y-2.8, col3-2, FS_LABEL, FS_VAL, FH);
-    campo(doc, 'Fecha',     fechaMostrar,                             M+col3*2+1, y-2.8, col3-2, FS_LABEL, FS_VAL, FH);
-    y += FH - 1;
+    // Tique y Fecha en misma fila
+    drawCampo(doc, 'N.º Tique', document.getElementById('nTique').value, M+col3W,   afterSec1Header+2, col3W-1);
+    drawCampo(doc, 'Fecha',     fechaMostrar,                             M+col3W*2, afterSec1Header+2, col3W-1);
+    sy += 5.5;
 
     // Modalidad
-    y += GAP;
-    doc.setFontSize(FS_LABEL); doc.setFont('helvetica','bold');
-    doc.text('Modalidad', M+1, y);
-    y += 2.8;
+    doc.setFontSize(6); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
+    doc.text('Modalidad', M+1, sy+2.5);
+    sy += 3.2;
     let mx = M+1;
-    mx = radio(doc, 'Dotación', modalidad==='Dotación',        mx, y, FS_RADIO, R_RADIO);
-    mx = radio(doc, 'Préstamo', modalidad==='Préstamo',        mx, y, FS_RADIO, R_RADIO);
-    mx = radio(doc, 'Otro',     modalidad.startsWith('Otro'),  mx, y, FS_RADIO, R_RADIO);
+    mx = drawRadio(doc, 'Dotación', modalidad==='Dotación',       mx, sy);
+    mx = drawRadio(doc, 'Préstamo', modalidad==='Préstamo',       mx, sy);
+    mx = drawRadio(doc, 'Otro',     modalidad.startsWith('Otro'), mx, sy);
     if (modalidad.startsWith('Otro:')) {
-        doc.setFontSize(FS_RADIO); doc.setFont('helvetica','normal');
-        doc.text(modalidad.replace('Otro: ',''), mx, y + R_RADIO*0.7);
+        doc.setFontSize(7); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
+        doc.text(modalidad.replace('Otro: ',''), mx, sy+2.5);
     }
-    y += 3.5;
+    y += s1H + 1.5;
 
     // ==============================
-    // SECCIÓN 2: PERSONA QUE ENTREGA
+    // SECCIÓN 2
     // ==============================
-    y += GAP;
-    const sec2H = BH + 3 + (FH+1.5)*2 + 5;
+    const hW = W/2 - 1;
+    const s2H = 5 + 2.5 + 3 + (9.7*2) + 5;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
-    doc.rect(M, y, W, sec2H);
-    seccionTitulo(doc, '2. Datos de la persona que entrega', M, y, W, FS_SEC, BH);
-    y += BH + 1.5;
+    doc.rect(M, y, W, s2H);
+    const afterS2 = drawSeccionHeader(doc, '2. Datos de la persona que entrega', M, y, W);
+    sy = afterS2 + 2;
 
     const tipoEntrega = getRadioValue('tipoEntrega');
     let ex = M+1;
-    ex = radio(doc, 'Área TI',       tipoEntrega==='Área TI',       ex, y, FS_RADIO, R_RADIO);
-    ex = radio(doc, 'Pers. Interno', tipoEntrega==='Pers. Interno', ex, y, FS_RADIO, R_RADIO);
-    ex = radio(doc, 'Pers. Externo', tipoEntrega==='Pers. Externo', ex, y, FS_RADIO, R_RADIO);
-    ex = radio(doc, 'Proveedor',     tipoEntrega==='Proveedor',     ex, y, FS_RADIO, R_RADIO);
-    y += 3.5;
+    ex = drawRadio(doc, 'Área TI',       tipoEntrega==='Área TI',       ex, sy);
+    ex = drawRadio(doc, 'Pers. Interno', tipoEntrega==='Pers. Interno', ex, sy);
+    ex = drawRadio(doc, 'Pers. Externo', tipoEntrega==='Pers. Externo', ex, sy);
+    ex = drawRadio(doc, 'Proveedor',     tipoEntrega==='Proveedor',     ex, sy);
+    sy += 5;
 
-    const hW = W/2 - 1.5;
-    campo(doc, 'Nombre',   document.getElementById('entNombre').value,  M+1,      y, hW, FS_LABEL, FS_VAL, FH);
-    campo(doc, 'DNI',      document.getElementById('entDNI').value,     M+hW+2.5, y, hW, FS_LABEL, FS_VAL, FH);
-    y += FH + 2.5;
-    campo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M+1,      y, hW, FS_LABEL, FS_VAL, FH);
-    campo(doc, 'Teléfono', document.getElementById('entTelf').value,    M+hW+2.5, y, hW, FS_LABEL, FS_VAL, FH);
-    y += FH + 2;
+    drawCampo(doc, 'Nombre',   document.getElementById('entNombre').value,  M,        sy, hW);
+    drawCampo(doc, 'DNI',      document.getElementById('entDNI').value,     M+hW+1,   sy, hW);
+    sy += 9.7;
+    drawCampo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M,        sy, hW);
+    drawCampo(doc, 'Teléfono', document.getElementById('entTelf').value,    M+hW+1,   sy, hW);
+    y += s2H + 1.5;
 
     // ==============================
-    // SECCIÓN 3: PERSONA QUE RECOGE
+    // SECCIÓN 3
     // ==============================
-    y += GAP;
-    const sec3H = BH + 3 + (FH+1.5)*2 + 5;
+    const s3H = 5 + 2.5 + 3 + (9.7*2) + 5;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
-    doc.rect(M, y, W, sec3H);
-    seccionTitulo(doc, '3. Datos de la persona que recoge', M, y, W, FS_SEC, BH);
-    y += BH + 1.5;
+    doc.rect(M, y, W, s3H);
+    const afterS3 = drawSeccionHeader(doc, '3. Datos de la persona que recoge', M, y, W);
+    sy = afterS3 + 2;
 
     const tipoRecoge = getRadioValue('tipoRecoge');
     let rx2 = M+1;
-    rx2 = radio(doc, 'Área TI',       tipoRecoge==='Área TI',       rx2, y, FS_RADIO, R_RADIO);
-    rx2 = radio(doc, 'Pers. Interno', tipoRecoge==='Pers. Interno', rx2, y, FS_RADIO, R_RADIO);
-    rx2 = radio(doc, 'Pers. Externo', tipoRecoge==='Pers. Externo', rx2, y, FS_RADIO, R_RADIO);
-    rx2 = radio(doc, 'Proveedor',     tipoRecoge==='Proveedor',     rx2, y, FS_RADIO, R_RADIO);
-    y += 3.5;
+    rx2 = drawRadio(doc, 'Área TI',       tipoRecoge==='Área TI',       rx2, sy);
+    rx2 = drawRadio(doc, 'Pers. Interno', tipoRecoge==='Pers. Interno', rx2, sy);
+    rx2 = drawRadio(doc, 'Pers. Externo', tipoRecoge==='Pers. Externo', rx2, sy);
+    rx2 = drawRadio(doc, 'Proveedor',     tipoRecoge==='Proveedor',     rx2, sy);
+    sy += 5;
 
-    campo(doc, 'Nombre',   document.getElementById('recNombre').value,  M+1,      y, hW, FS_LABEL, FS_VAL, FH);
-    campo(doc, 'DNI',      document.getElementById('recDNI').value,     M+hW+2.5, y, hW, FS_LABEL, FS_VAL, FH);
-    y += FH + 2.5;
-    campo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M+1,      y, hW, FS_LABEL, FS_VAL, FH);
-    campo(doc, 'Teléfono', document.getElementById('recTelf').value,    M+hW+2.5, y, hW, FS_LABEL, FS_VAL, FH);
-    y += FH + 2;
+    drawCampo(doc, 'Nombre',   document.getElementById('recNombre').value,  M,        sy, hW);
+    drawCampo(doc, 'DNI',      document.getElementById('recDNI').value,     M+hW+1,   sy, hW);
+    sy += 9.7;
+    drawCampo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M,        sy, hW);
+    drawCampo(doc, 'Teléfono', document.getElementById('recTelf').value,    M+hW+1,   sy, hW);
+    y += s3H + 1.5;
 
     // ==============================
     // TABLA EQUIPAMIENTO
     // ==============================
-    y += GAP;
     const datosTabla = getDatosTabla();
     const colHeaders = ['Nombre', 'Marca', 'Modelo', 'N.º de serie', 'CRIHJA / IMEI'];
     const colWidths  = [W*0.26, W*0.12, W*0.22, W*0.20, W*0.20];
-    const tablaH     = BH + ROW_H + ROW_H * datosTabla.length + 1;
+    const rowH = 5;
+    const tablaH = 5 + rowH + rowH * datosTabla.length + 0.5;
 
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
     doc.rect(M, y, W, tablaH);
-    seccionTitulo(doc, 'Datos del equipamiento informático entregado o recogido', M, y, W, FS_SEC, BH);
-    y += BH;
+    const afterTablaH = drawSeccionHeader(doc, 'Datos del equipamiento informático entregado o recogido', M, y, W);
+    sy = afterTablaH;
 
-    // Cabecera tabla
-    doc.setFillColor(30,30,30);
-    doc.rect(M, y, W, ROW_H, 'F');
+    // Cabecera tabla oscura
+    doc.setFillColor(33,37,41);
+    doc.rect(M, sy, W, rowH, 'F');
     doc.setTextColor(255,255,255);
-    doc.setFontSize(6); doc.setFont('helvetica','bold');
+    doc.setFontSize(6.5); doc.setFont('helvetica','bold');
     let cx = M;
-    colHeaders.forEach((h, i) => {
-        doc.text(h, cx+1.5, y + ROW_H*0.72);
+    colHeaders.forEach((h,i) => {
+        doc.text(h, cx+1.5, sy+rowH*0.72);
         cx += colWidths[i];
     });
     doc.setTextColor(0,0,0);
-    y += ROW_H;
+    sy += rowH;
 
-    // Filas
-    doc.setFont('helvetica','normal'); doc.setFontSize(6);
+    doc.setFont('helvetica','normal'); doc.setFontSize(6.5);
     datosTabla.forEach(fila => {
         cx = M;
         doc.setDrawColor(180,180,180); doc.setLineWidth(0.15);
-        doc.rect(M, y, W, ROW_H);
+        doc.rect(M, sy, W, rowH);
         fila.forEach((celda, ci) => {
-            if (ci > 0) doc.line(cx, y, cx, y+ROW_H);
-            doc.text(celda||'', cx+1.5, y+ROW_H*0.72);
+            if (ci > 0) doc.line(cx, sy, cx, sy+rowH);
+            doc.text(celda||'', cx+1.5, sy+rowH*0.72);
             cx += colWidths[ci];
         });
-        y += ROW_H;
+        sy += rowH;
     });
-    y += 1.5;
+    y += tablaH + 1.5;
 
     // ==============================
     // TEXTO LEGAL
     // ==============================
-    y += GAP;
     const parrafosLegal = document.querySelectorAll('.texto-legal p');
+    const FS_LEGAL = 5.2;
+    const LINE_H   = FS_LEGAL * 0.43;
     doc.setFontSize(FS_LEGAL); doc.setFont('helvetica','normal');
-    let legalH = 2;
+    let legalH = 2.5;
     parrafosLegal.forEach(p => {
         const lines = doc.splitTextToSize(p.textContent.trim(), W-3);
-        legalH += lines.length * (FS_LEGAL * 0.42) + 0.8;
+        legalH += lines.length * LINE_H + 0.8;
     });
 
-    doc.setFillColor(249,249,249); doc.setDrawColor(200,200,200); doc.setLineWidth(0.2);
+    doc.setFillColor(249,249,249); doc.setDrawColor(190,190,190); doc.setLineWidth(0.2);
     doc.rect(M, y, W, legalH, 'FD');
-    let ly = y + 1.8;
+    let ly = y + 2;
     parrafosLegal.forEach(p => {
         const lines = doc.splitTextToSize(p.textContent.trim(), W-3);
         doc.text(lines, M+1.5, ly);
-        ly += lines.length * (FS_LEGAL * 0.42) + 0.8;
+        ly += lines.length * LINE_H + 0.8;
     });
-    y += legalH + GAP;
+    y += legalH + 1.5;
 
     // ==============================
-    // FIRMAS
+    // FIRMAS — ocupan el espacio restante
     // ==============================
-    // Calcular espacio restante
     const espacioRestante = PH - M - y;
-    const firmaH = Math.max(espacioRestante - 7, 14);
+    const labelH = 5;
+    const firmaH = Math.max(espacioRestante - labelH - 1, 12);
     const firmaW = W/2 - 3;
 
-    doc.setFontSize(FS_FIRMA); doc.setFont('helvetica','bold');
-    doc.text('Firma del Área TI',      M + firmaW/2,          y+3, {align:'center'});
-    doc.text('Firma de la otra parte', M + firmaW+6+firmaW/2, y+3, {align:'center'});
-    y += 4.5;
+    doc.setFontSize(7.5); doc.setFont('helvetica','bold');
+    doc.text('Firma del Área TI',      M + firmaW/2,          y+3.5, {align:'center'});
+    doc.text('Firma de la otra parte', M + firmaW+6+firmaW/2, y+3.5, {align:'center'});
+    y += labelH;
 
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
-    doc.rect(M,            y, firmaW, firmaH);
-    doc.rect(M+firmaW+6,   y, firmaW, firmaH);
+    doc.rect(M,          y, firmaW, firmaH);
+    doc.rect(M+firmaW+6, y, firmaW, firmaH);
 
     if (!firmaTI.isEmpty())
-        doc.addImage(firmaTI.toDataURL('image/png'),   'PNG', M+1,          y+1, firmaW-2, firmaH-2);
+        doc.addImage(firmaTI.toDataURL('image/png'),   'PNG', M+1,        y+1, firmaW-2, firmaH-2);
     if (!firmaOtra.isEmpty())
-        doc.addImage(firmaOtra.toDataURL('image/png'), 'PNG', M+firmaW+7,   y+1, firmaW-2, firmaH-2);
+        doc.addImage(firmaOtra.toDataURL('image/png'), 'PNG', M+firmaW+7, y+1, firmaW-2, firmaH-2);
 
     // ==============================
-    // NOMBRE DEL ARCHIVO
+    // NOMBRE ARCHIVO
     // ==============================
     const operacionFinal  = getRadioValue('operacion') || 'SinOperacion';
     const esPrestamo      = document.getElementById('modPrestamo').checked;
