@@ -1,4 +1,4 @@
-// ---- FIRMA ----
+// ---- INICIALIZAR SIGNATURE PAD ----
 const canvasFirma = document.getElementById('firmaUsuario');
 const firmaUsuario = new SignaturePad(canvasFirma);
 
@@ -43,157 +43,242 @@ document.querySelector('.btn-volver-marca').addEventListener('click', function()
     this.style.display = 'none';
 });
 
+// ---- HELPERS PDF ----
+function linea(doc, y, M, W) {
+    doc.setDrawColor(180, 180, 180);
+    doc.setLineWidth(0.2);
+    doc.line(M, y, M + W, y);
+}
+
+function campoConLinea(doc, label, valor, x, y, w, labelFs, valFs) {
+    if (label) {
+        doc.setFontSize(labelFs);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(80, 80, 80);
+        doc.text(label, x, y);
+        x += doc.getTextWidth(label) + 1.5;
+        w -= doc.getTextWidth(label) + 1.5;
+    }
+    doc.setFontSize(valFs);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(0, 0, 0);
+    doc.text(valor || '', x + 1, y);
+    doc.setDrawColor(100, 100, 100);
+    doc.setLineWidth(0.3);
+    doc.line(x, y + 0.8, x + w, y + 0.8);
+    doc.setFont('helvetica', 'normal');
+}
+
 // ---- GENERAR PDF ----
 function generarPDF() {
-    const elemento = document.getElementById('documentoCompleto');
-    const boton = document.getElementById('botonPDF');
-    const btnLimpiar = document.getElementById('btnLimpiarFirma');
-
-    const firmaData = !firmaUsuario.isEmpty() ? firmaUsuario.toDataURL('image/png') : null;
-    const canvasWrapper = canvasFirma.parentElement;
-
-    const placeholder = document.createElement('div');
-   placeholder.style.cssText = 'width:100%; height:150px; border:1px solid #007A33; background:#fff; display:block;';
-    if (firmaData) {
-        const img = document.createElement('img');
-        img.src = firmaData;
-        img.style.cssText = 'width:100%; height:150px; object-fit:contain;';
-        placeholder.appendChild(img);
-    }
-
-    // Sustituir todos los inputs por spans
-    const inputsInfo = [];
-    document.querySelectorAll('input[type="text"], input[type="date"]').forEach(input => {
-        const span = document.createElement('span');
-        const valor = input.value.trim();
-        span.textContent = valor || '\u00A0';
-        span.style.cssText = 'font-size:16px; padding:2px 4px; display:inline-block; word-break:break-word; white-space:normal; font-weight:bold;';
-        input.parentElement.insertBefore(span, input);
-        input.style.display = 'none';
-        inputsInfo.push({ input, span });
-    });
-
-    // Sustituir select de marca por texto plano
-    const marcaSelect = document.querySelector('.marca-select');
-    const marcaOtro = document.querySelector('.marca-otro');
-    const marcaValor = marcaSelect.value === 'Otro' ? marcaOtro.value : marcaSelect.value;
-    const marcaSpan = document.createElement('span');
-    marcaSpan.textContent = marcaValor || '\u00A0';
-    marcaSpan.style.cssText = 'font-size:16px; padding:2px 4px; display:inline-block; font-weight:bold;';
-    marcaSelect.parentElement.insertBefore(marcaSpan, marcaSelect);
-    marcaSelect.style.display = 'none';
-    marcaOtro.style.display = 'none';
-    const btnVolver = marcaSelect.parentElement.querySelector('.btn-volver-marca');
-    if (btnVolver) btnVolver.style.display = 'none';
-
-    canvasFirma.style.display = 'none';
-    canvasWrapper.insertBefore(placeholder, canvasFirma);
-    btnLimpiar.style.display = 'none';
-    boton.style.display = 'none';
-
-    elemento.style.marginBottom = '0';
-    elemento.style.paddingBottom = '0';
-
-    html2canvas(elemento, {
-        scale: 1.5,
-        useCORS: true,
-        logging: false,
-        backgroundColor: '#ffffff'
-    }).then(canvas => {
-    // Restaurar inputs
-    inputsInfo.forEach(({ input, span }) => {
-        input.style.display = '';
-        input.parentElement.removeChild(span);
-    });
-
-    // Restaurar marca
-    marcaSelect.style.display = '';
-    marcaSelect.parentElement.removeChild(marcaSpan);
-    if (marcaSelect.value === 'Otro') {
-        marcaOtro.style.display = 'inline-block';
-        if (btnVolver) btnVolver.style.display = 'inline-block';
-    }
-
-    // Restaurar firma y botones
-    canvasFirma.style.display = 'block';
-    canvasWrapper.removeChild(placeholder);
-    btnLimpiar.style.display = '';
-    boton.style.display = '';
-    elemento.style.marginBottom = '';
-    elemento.style.paddingBottom = '';
-
-    // Recortar canvas para eliminar espacio en blanco
-    const ctx = canvas.getContext('2d');
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const pixels = imageData.data;
-    let lastRow = 0;
-    for (let y = canvas.height - 1; y >= 0; y--) {
-        let rowEmpty = true;
-        for (let x = 0; x < canvas.width; x++) {
-            const idx = (y * canvas.width + x) * 4;
-            const r = pixels[idx], g = pixels[idx+1], b = pixels[idx+2];
-            if (r < 250 || g < 250 || b < 250) {
-                rowEmpty = false;
-                break;
-            }
-        }
-        if (!rowEmpty) { lastRow = y + 20; break; }
-    }
-
-    const canvasRecortado = document.createElement('canvas');
-    canvasRecortado.width = canvas.width;
-    canvasRecortado.height = lastRow;
-    canvasRecortado.getContext('2d').drawImage(canvas, 0, 0);
-
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
+    const PW = doc.internal.pageSize.getWidth();
+    const PH = doc.internal.pageSize.getHeight();
+    const M  = 18;  // margen amplio para este doc tipo carta
+    const W  = PW - M * 2;
+    let y = M;
 
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const pdfHeight = (canvasRecortado.height * pageWidth) / canvasRecortado.width;
-
-    if (pdfHeight <= pageHeight) {
-        doc.addImage(canvasRecortado.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, pdfHeight);
-    } else {
-        const escala = pageWidth / canvasRecortado.width;
-        const alturaCorte = Math.floor(pageHeight / escala);
-        let posicion = 0;
-        let primeraPagina = true;
-
-        while (posicion < canvasRecortado.height) {
-            const alturaTrozo = Math.min(alturaCorte, canvasRecortado.height - posicion);
-            if (alturaTrozo <= 0) break;
-
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = canvasRecortado.width;
-            tempCanvas.height = alturaTrozo;
-            const tempCtx = tempCanvas.getContext('2d');
-            tempCtx.fillStyle = '#ffffff';
-            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-            tempCtx.drawImage(canvasRecortado, 0, posicion, canvasRecortado.width, alturaTrozo, 0, 0, canvasRecortado.width, alturaTrozo);
-
-            if (!primeraPagina) doc.addPage();
-            doc.addImage(tempCanvas.toDataURL('image/jpeg', 0.85), 'JPEG', 0, 0, pageWidth, (alturaTrozo * pageWidth) / canvasRecortado.width);
-
-            posicion += alturaTrozo;
-            primeraPagina = false;
+    // ==============================
+    // CABECERA: logo centrado
+    // ==============================
+    const logoImg = document.querySelector('.cabecera-logo-completo');
+    let logoH = 0;
+    if (logoImg && logoImg.complete && logoImg.naturalWidth > 0) {
+        try {
+            const tmp = document.createElement('canvas');
+            tmp.width = logoImg.naturalWidth;
+            tmp.height = logoImg.naturalHeight;
+            tmp.getContext('2d').drawImage(logoImg, 0, 0);
+            const logoData = tmp.toDataURL('image/png');
+            logoH = 10;
+            const logoW = logoH * (logoImg.naturalWidth / logoImg.naturalHeight);
+            doc.addImage(logoData, 'PNG', PW/2 - logoW/2, y, logoW, logoH);
+        } catch(e) {
+            doc.setFontSize(9); doc.setFont('helvetica','bold');
+            doc.setTextColor(0,122,51);
+            doc.text('Junta de Andalucía — SANDETEL', PW/2, y+7, {align:'center'});
+            doc.setTextColor(0,0,0);
+            logoH = 8;
         }
     }
-    
-    doc.save('compromiso_material_tic.pdf');
-}).catch(err => {
-        console.error('Error al generar PDF:', err);
-        inputsInfo.forEach(({ input, span }) => {
-            input.style.display = '';
-            input.parentElement.removeChild(span);
-        });
-        marcaSelect.style.display = '';
-        marcaSelect.parentElement.removeChild(marcaSpan);
-        canvasFirma.style.display = 'block';
-        canvasWrapper.removeChild(placeholder);
-        btnLimpiar.style.display = '';
-        boton.style.display = '';
-        elemento.style.marginBottom = '';
-        elemento.style.paddingBottom = '';
+    y += logoH + 3;
+    doc.setDrawColor(0,122,51); doc.setLineWidth(0.7);
+    doc.line(M, y, M+W, y);
+    y += 7;
+
+    // ==============================
+    // TÍTULO
+    // ==============================
+    doc.setFontSize(9.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(0, 0, 0);
+    const tituloTexto = 'COMPROMISO DE RESPONSABILIDAD EN LA CESIÓN Y USO DE MATERIAL TIC\nTITULARIDAD DE SOCIEDAD ANDALUZA PARA EL DESARROLLO DE LAS TELECOMUNICACIONES, S.A.';
+    const tituloLines = doc.splitTextToSize(tituloTexto, W);
+    doc.text(tituloLines, PW/2, y, {align:'center'});
+    // Subrayado
+    const tituloH = tituloLines.length * 5;
+    doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
+    doc.line(M + W*0.1, y + tituloH - 1, M + W*0.9, y + tituloH - 1);
+    y += tituloH + 8;
+
+    // ==============================
+    // CUERPO: "Yo,"
+    // ==============================
+    const FS  = 9;    // fuente cuerpo
+    const FSB = 9.5;  // fuente valores
+    const LH  = 5.5;  // interlineado
+
+    doc.setFontSize(FS); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
+    doc.text('Yo,', M, y);
+    y += LH * 0.5;
+
+    // Nombre — línea completa
+    const nombreVal = document.getElementById('nombreUsuario').value.trim();
+    doc.setFontSize(FSB); doc.setFont('helvetica','bold');
+    doc.text(nombreVal || '', M + 1, y + LH);
+    doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
+    doc.line(M, y + LH + 1, M + W, y + LH + 1);
+    y += LH * 2;
+
+    // "con DNI _____ declaro..."
+    const dniVal = document.getElementById('dniUsuario').value.trim();
+    const textoAntesDNI = 'con DNI ';
+    const textoPostDNI  = ' declaro haber recibido la cesión del siguiente terminal/dispositivo móvil titularidad de';
+    const textoPost2    = 'SOCIEDAD ANDALUZA PARA EL DESARROLLO DE LAS TELECOMUNICACIONES, S.A. para su uso como apoyo';
+    const textoPost3    = 'a mis funciones y tareas en la empresa:';
+
+    doc.setFontSize(FS); doc.setFont('helvetica','normal');
+    let lineText = textoAntesDNI;
+    doc.text(lineText, M, y);
+    const xDni = M + doc.getTextWidth(lineText);
+    // valor DNI en negrita con subrayado
+    doc.setFont('helvetica','bold');
+    doc.text(dniVal || '', xDni + 1, y);
+    doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
+    doc.line(xDni, y+0.8, xDni + 35, y+0.8);
+    const xPostDni = xDni + 36;
+    doc.setFont('helvetica','normal');
+    // Texto que sigue en la misma línea
+    const restoPrimerLinea = doc.splitTextToSize(textoPostDNI, M + W - xPostDni);
+    doc.text(restoPrimerLinea[0], xPostDni, y);
+    y += LH;
+    // Resto del párrafo
+    const parrafo1Lines = doc.splitTextToSize(
+        restoPrimerLinea.slice(1).join(' ') + ' ' + textoPost2 + ' ' + textoPost3,
+        W
+    );
+    doc.text(parrafo1Lines, M, y);
+    y += parrafo1Lines.length * LH + 4;
+
+    // ==============================
+    // CAMPOS: Marca, Modelo, IMEI, Fecha
+    // ==============================
+    const marcaSelect = document.querySelector('.marca-select');
+    const marcaOtro   = document.querySelector('.marca-otro');
+    const marcaVal    = marcaSelect.value === 'Otro' ? marcaOtro.value : marcaSelect.value;
+    const modeloVal   = document.getElementById('modelo').value.trim();
+    const imeiVal     = document.getElementById('imei').value.trim();
+    const fechaRaw    = document.getElementById('fechaEntrega').value;
+    const fechaVal    = fechaRaw ? fechaRaw.split('-').reverse().join('/') : '';
+
+    const campos = [
+        { label: 'Marca:', valor: marcaVal },
+        { label: 'Modelo:', valor: modeloVal },
+        { label: 'Código de IMEI:', valor: imeiVal },
+        { label: 'Fecha de Entrega:', valor: fechaVal },
+    ];
+
+    campos.forEach(c => {
+        doc.setFontSize(FS); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
+        doc.text(c.label, M, y);
+        const xVal = M + doc.getTextWidth(c.label) + 2;
+        doc.setFontSize(FSB); doc.setFont('helvetica','bold'); doc.setTextColor(0,0,0);
+        doc.text(c.valor || '', xVal, y);
+        doc.setDrawColor(100,100,100); doc.setLineWidth(0.25);
+        doc.line(xVal, y+0.8, M+W, y+0.8);
+        y += LH + 1.5;
     });
+    y += 4;
+
+    // ==============================
+    // TEXTO LEGAL (del DOM)
+    // ==============================
+    const parrafosLegal = document.querySelectorAll('.texto-legal-compromiso p');
+    const FS_LEGAL = 7.5;
+    const LH_LEGAL = FS_LEGAL * 0.50;
+
+    // Calcular altura
+    doc.setFontSize(FS_LEGAL); doc.setFont('helvetica','normal');
+    let legalH = 4;
+    parrafosLegal.forEach(p => {
+        const lines = doc.splitTextToSize(p.textContent.trim(), W - 6);
+        legalH += lines.length * LH_LEGAL + 1.5;
+    });
+
+    doc.setFillColor(249,249,249); doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
+    doc.rect(M, y, W, legalH, 'FD');
+    // Borde izquierdo verde más grueso
+    doc.setFillColor(0,122,51);
+    doc.rect(M, y, 2, legalH, 'F');
+
+    let ly = y + 3;
+    doc.setTextColor(60,60,60);
+    parrafosLegal.forEach(p => {
+        const lines = doc.splitTextToSize(p.textContent.trim(), W - 8);
+        doc.text(lines, M + 4, ly);
+        ly += lines.length * LH_LEGAL + 1.5;
+    });
+    doc.setTextColor(0,0,0);
+    y += legalH + 8;
+
+    // ==============================
+    // FECHA DE FIRMA
+    // ==============================
+    const ciudadVal = document.getElementById('ciudad').value.trim();
+    const diaVal    = document.getElementById('dia').value.trim();
+    const mesVal    = document.getElementById('mes').value.trim();
+    const anioVal   = document.getElementById('anio').value.trim();
+
+    doc.setFontSize(FS); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
+    const fechaFirmaTexto = `En ${ciudadVal || '_______________'}, a ${diaVal || '__'} de ${mesVal || '___________'} de 20${anioVal || '__'}`;
+    doc.text(fechaFirmaTexto, PW/2, y, {align:'center'});
+    y += 10;
+
+    // ==============================
+    // FIRMA
+    // ==============================
+    const firmaW = W / 2;
+    const firmaH = 25;
+
+    doc.setFontSize(8.5); doc.setFont('helvetica','bold');
+    doc.text('Firma', M, y);
+    y += 4;
+    doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
+    doc.text('Usuario:', M, y);
+    y += 3;
+
+    doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
+    doc.rect(M, y, firmaW, firmaH);
+
+    if (!firmaUsuario.isEmpty()) {
+        const ratio = (canvasFirma.offsetWidth || 400) / 150;
+        let iw = firmaW * 0.85, ih = iw / ratio;
+        if (ih > firmaH * 0.85) { ih = firmaH * 0.85; iw = ih * ratio; }
+        const ix = M + (firmaW - iw) / 2;
+        const iy = y + (firmaH - ih) / 2;
+        doc.addImage(firmaUsuario.toDataURL('image/png'), 'PNG', ix, iy, iw, ih);
+    }
+
+    // ==============================
+    // NOMBRE DEL ARCHIVO
+    // ==============================
+    const dniArchivo   = dniVal.replace(/\s/g,'') || 'SinDNI';
+    const nombrePartes = document.getElementById('nombreUsuario').value.trim().split(/\s+/);
+    const inicialN     = nombrePartes[0] ? nombrePartes[0][0].toUpperCase() : '';
+    const apellidoN    = nombrePartes[1] || '';
+    const nombreArchivo = (inicialN + apellidoN) || 'SinNombre';
+    const fechaArch    = fechaRaw ? fechaRaw.split('-').reverse().join('') : 'SinFecha';
+
+    doc.save(`${dniArchivo}_${nombreArchivo}_Cesion_${fechaArch}.pdf`);
 }
