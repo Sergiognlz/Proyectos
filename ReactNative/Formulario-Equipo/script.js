@@ -98,7 +98,7 @@ function drawSeccionHeader(doc, texto, x, y, w) {
 }
 
 function drawCampo(doc, label, valor, x, y, w) {
-    const pad = 1.5;
+    const pad = 3;
     doc.setFontSize(6);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(80, 80, 80);
