@@ -2,6 +2,9 @@
 const canvasFirma = document.getElementById('firmaUsuario');
 const firmaUsuario = new SignaturePad(canvasFirma);
 
+// Variable para almacenar la imagen subida (base64)
+let firmaImagenUsuario = null;
+
 canvasFirma.style.height = '150px';
 
 function ajustarCanvas(canvas) {
@@ -12,8 +15,32 @@ function ajustarCanvas(canvas) {
 }
 ajustarCanvas(canvasFirma);
 
+// ---- LIMPIAR FIRMA (pad de dibujo) ----
 function limpiarFirma() {
     firmaUsuario.clear();
+}
+
+// ---- SUBIDA DE IMAGEN DE FIRMA ----
+document.getElementById('inputFirmaUsuario').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        firmaImagenUsuario = e.target.result;
+        document.getElementById('previewFirmaUsuario').src = firmaImagenUsuario;
+        document.getElementById('previewWrapUsuario').style.display = 'flex';
+        // Limpiar el pad para evitar tener dos firmas activas a la vez
+        firmaUsuario.clear();
+    };
+    reader.readAsDataURL(file);
+});
+
+function quitarFirmaImagen() {
+    firmaImagenUsuario = null;
+    document.getElementById('previewFirmaUsuario').src = '';
+    document.getElementById('previewWrapUsuario').style.display = 'none';
+    document.getElementById('inputFirmaUsuario').value = '';
 }
 
 // ---- MARCA SELECT ----
@@ -75,9 +102,13 @@ function generarPDF() {
     const doc = new jsPDF('p', 'mm', 'a4');
     const PW = doc.internal.pageSize.getWidth();
     const PH = doc.internal.pageSize.getHeight();
-    const M  = 18;  // margen amplio para este doc tipo carta
+    const M  = 18;
     const W  = PW - M * 2;
     let y = M;
+
+    // ---- Determinar qué firma usar ----
+    // Prioridad: imagen subida > pad dibujado
+    const firmaData = firmaImagenUsuario || (!firmaUsuario.isEmpty() ? firmaUsuario.toDataURL('image/png') : null);
 
     // ==============================
     // CABECERA: logo centrado
@@ -116,24 +147,22 @@ function generarPDF() {
     const tituloTexto = 'COMPROMISO DE RESPONSABILIDAD EN LA CESIÓN Y USO DE MATERIAL TIC\nTITULARIDAD DE SOCIEDAD ANDALUZA PARA EL DESARROLLO DE LAS TELECOMUNICACIONES, S.A.';
     const tituloLines = doc.splitTextToSize(tituloTexto, W);
     doc.text(tituloLines, PW/2, y, {align:'center'});
-    // Subrayado
     const tituloH = tituloLines.length * 5;
     doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
     doc.line(M + W*0.1, y + tituloH - 1, M + W*0.9, y + tituloH - 1);
     y += tituloH + 28;
 
     // ==============================
-    // CUERPO: "Yo,"
+    // CUERPO
     // ==============================
-    const FS  = 9;    // fuente cuerpo
-    const FSB = 9.5;  // fuente valores
-    const LH  = 5.5;  // interlineado
+    const FS  = 9;
+    const FSB = 9.5;
+    const LH  = 5.5;
 
     doc.setFontSize(FS); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
     doc.text('Yo,', M, y);
     y += LH * 0.5;
 
-    // Nombre — línea completa
     const nombreVal = document.getElementById('nombreUsuario').value.trim();
     doc.setFontSize(FSB); doc.setFont('helvetica','bold');
     doc.text(nombreVal || '', M + 1, y + LH);
@@ -141,7 +170,6 @@ function generarPDF() {
     doc.line(M, y + LH + 1, M + W, y + LH + 1);
     y += LH * 2;
 
-    // "con DNI _____ declaro..."
     const dniVal = document.getElementById('dniUsuario').value.trim();
     const textoAntesDNI = 'con DNI ';
     const textoPostDNI  = ' declaro haber recibido la cesión del siguiente terminal/dispositivo móvil titularidad de';
@@ -152,18 +180,15 @@ function generarPDF() {
     let lineText = textoAntesDNI;
     doc.text(lineText, M, y);
     const xDni = M + doc.getTextWidth(lineText);
-    // valor DNI en negrita con subrayado
     doc.setFont('helvetica','bold');
     doc.text(dniVal || '', xDni + 1, y);
     doc.setDrawColor(100,100,100); doc.setLineWidth(0.3);
     doc.line(xDni, y+0.8, xDni + 35, y+0.8);
     const xPostDni = xDni + 36;
     doc.setFont('helvetica','normal');
-    // Texto que sigue en la misma línea
     const restoPrimerLinea = doc.splitTextToSize(textoPostDNI, M + W - xPostDni);
     doc.text(restoPrimerLinea[0], xPostDni, y);
     y += LH;
-    // Resto del párrafo
     const parrafo1Lines = doc.splitTextToSize(
         restoPrimerLinea.slice(1).join(' ') + ' ' + textoPost2 + ' ' + textoPost3,
         W
@@ -172,7 +197,7 @@ function generarPDF() {
     y += parrafo1Lines.length * LH + 4;
 
     // ==============================
-    // CAMPOS: Marca, Modelo, IMEI, Fecha
+    // CAMPOS
     // ==============================
     const marcaSelect = document.querySelector('.marca-select');
     const marcaOtro   = document.querySelector('.marca-otro');
@@ -202,13 +227,12 @@ function generarPDF() {
     y += 4;
 
     // ==============================
-    // TEXTO LEGAL (del DOM)
+    // TEXTO LEGAL
     // ==============================
     const parrafosLegal = document.querySelectorAll('.texto-legal-compromiso p');
     const FS_LEGAL = 7.5;
     const LH_LEGAL = FS_LEGAL * 0.50;
 
-    // Calcular altura
     doc.setFontSize(FS_LEGAL); doc.setFont('helvetica','normal');
     let legalH = 4;
     parrafosLegal.forEach(p => {
@@ -218,7 +242,6 @@ function generarPDF() {
 
     doc.setFillColor(249,249,249); doc.setDrawColor(0,122,51); doc.setLineWidth(0.4);
     doc.rect(M, y, W, legalH, 'FD');
-    // Borde izquierdo verde más grueso
     doc.setFillColor(0,122,51);
     doc.rect(M, y, 2, legalH, 'F');
 
@@ -233,7 +256,7 @@ function generarPDF() {
     y += legalH + 8;
 
     // ==============================
-    // FECHA DE FIRMA — anclada al fondo
+    // FECHA Y FIRMA — ancladas al fondo
     // ==============================
     const ciudadVal = document.getElementById('ciudad').value.trim();
     const diaVal    = document.getElementById('dia').value.trim();
@@ -245,46 +268,46 @@ function generarPDF() {
     const firmaH  = 38;
     const labelH  = 10;
     const fechaH  = 8;
-    // Todo anclado: fecha + label + firma + margen inferior
     const bloqueY = PH - M - fechaH - labelH - firmaH - 2;
 
-    // Línea separadora
     doc.setDrawColor(200,200,200); doc.setLineWidth(0.3);
     doc.line(M, bloqueY - 5, M+W, bloqueY - 5);
 
-    // Fecha centrada
     doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(0,0,0);
     const fechaFirmaTexto = `En ${ciudadVal || '_______________'}, a ${diaVal || '__'} de ${mesVal || '___________'} de 20${anioVal || '__'}`;
     doc.text(fechaFirmaTexto, PW/2, bloqueY, {align:'center'});
 
-    // Etiqueta firma
     const yLabel = bloqueY + fechaH;
     doc.setFontSize(8.5); doc.setFont('helvetica','bold');
     doc.text('Firma del usuario', firmaX + firmaW/2, yLabel, {align:'center'});
 
-    // Recuadro firma
     const yFirma = yLabel + 3;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.5);
     doc.rect(firmaX, yFirma, firmaW, firmaH);
 
-    if (!firmaUsuario.isEmpty()) {
-        const ratio = (canvasFirma.offsetWidth || 400) / 150;
+    // Insertar firma (imagen subida o pad dibujado)
+    if (firmaData) {
+        const img = new Image();
+        img.src = firmaData;
+        const naturalW = img.naturalWidth  || (canvasFirma.offsetWidth || 400);
+        const naturalH = img.naturalHeight || 150;
+        const ratio = naturalW / naturalH;
         let iw = firmaW * 0.78, ih = iw / ratio;
         if (ih > firmaH * 0.78) { ih = firmaH * 0.78; iw = ih * ratio; }
         const ix = firmaX + (firmaW - iw) / 2;
         const iy = yFirma + (firmaH - ih) / 2;
-        doc.addImage(firmaUsuario.toDataURL('image/png'), 'PNG', ix, iy, iw, ih);
+        doc.addImage(firmaData, 'PNG', ix, iy, iw, ih);
     }
 
     // ==============================
     // NOMBRE DEL ARCHIVO
     // ==============================
-    const dniArchivo   = dniVal.replace(/\s/g,'') || 'SinDNI';
-    const nombrePartes = document.getElementById('nombreUsuario').value.trim().split(/\s+/);
-    const inicialN     = nombrePartes[0] ? nombrePartes[0][0].toUpperCase() : '';
-    const apellidoN    = nombrePartes[1] || '';
+    const dniArchivo    = dniVal.replace(/\s/g,'') || 'SinDNI';
+    const nombrePartes  = document.getElementById('nombreUsuario').value.trim().split(/\s+/);
+    const inicialN      = nombrePartes[0] ? nombrePartes[0][0].toUpperCase() : '';
+    const apellidoN     = nombrePartes[1] || '';
     const nombreArchivo = (inicialN + apellidoN) || 'SinNombre';
-    const fechaArch    = fechaRaw ? fechaRaw.split('-').reverse().join('') : 'SinFecha';
+    const fechaArch     = fechaRaw ? fechaRaw.split('-').reverse().join('') : 'SinFecha';
 
     doc.save(`${dniArchivo}_${nombreArchivo}_Cesion_${fechaArch}.pdf`);
 }

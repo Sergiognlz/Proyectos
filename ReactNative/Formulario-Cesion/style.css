@@ -129,7 +129,7 @@ body {
 .texto-legal-compromiso p {
     margin-bottom: 8px;
 }
-/* FIRMAS */
+/* FIRMAS — canvas */
 .firma-canvas {
     border: 1px solid #007A33;
     width: 100%;
@@ -145,7 +145,86 @@ body {
     margin-bottom: 5px;
     display: block;
 }
-/* BOTÓN */
+
+/* SEPARADOR "ó" entre canvas y subida */
+.firma-separador {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0 4px;
+    color: #999;
+    font-size: 11px;
+}
+.firma-separador::before,
+.firma-separador::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+.firma-o {
+    white-space: nowrap;
+    padding: 0 4px;
+}
+
+/* ÁREA DE SUBIDA DE IMAGEN */
+.firma-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Botón subir firma */
+.btn-subir-firma {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 11px;
+    color: #007A33;
+    border: 1px dashed #007A33;
+    border-radius: 4px;
+    padding: 4px 12px;
+    background: #f6fbf8;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+}
+.btn-subir-firma:hover {
+    background: #007A33;
+    color: #fff;
+}
+
+/* Preview de imagen subida */
+.firma-preview-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #007A33;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background: #fff;
+    width: 100%;
+    justify-content: space-between;
+}
+.firma-preview-img {
+    height: 60px;
+    max-width: 70%;
+    object-fit: contain;
+}
+.btn-quitar-firma {
+    font-size: 11px;
+    color: #c0392b;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
+    text-decoration: underline;
+}
+.btn-quitar-firma:hover {
+    color: #922b21;
+}
+
+/* BOTÓN PRINCIPAL */
 .btn-primary {
     background-color: #007A33;
     border-color: #007A33;

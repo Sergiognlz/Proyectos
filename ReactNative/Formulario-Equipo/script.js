@@ -4,6 +4,57 @@ const canvasOtraParte = document.getElementById('firmaOtraParte');
 const firmaTI = new SignaturePad(canvasAreaTI);
 const firmaOtra = new SignaturePad(canvasOtraParte);
 
+// Variables para almacenar las imágenes subidas (base64)
+let firmaImagenTI   = null;
+let firmaImagenOtra = null;
+
+// ---- SUBIDA DE IMAGEN DE FIRMA ----
+document.getElementById('inputFirmaTI').addEventListener('change', function () {
+    cargarImagenFirma(this, 'TI');
+});
+document.getElementById('inputFirmaOtra').addEventListener('change', function () {
+    cargarImagenFirma(this, 'Otra');
+});
+
+function cargarImagenFirma(input, quien) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const dataURL = e.target.result;
+
+        if (quien === 'TI') {
+            firmaImagenTI = dataURL;
+            document.getElementById('previewFirmaTI').src = dataURL;
+            document.getElementById('previewWrapTI').style.display = 'flex';
+            // Si había algo dibujado en el pad, lo limpiamos para evitar confusión
+            firmaTI.clear();
+        } else {
+            firmaImagenOtra = dataURL;
+            document.getElementById('previewFirmaOtra').src = dataURL;
+            document.getElementById('previewWrapOtra').style.display = 'flex';
+            firmaOtra.clear();
+        }
+    };
+    reader.readAsDataURL(file);
+}
+
+function quitarFirmaImagen(quien) {
+    if (quien === 'TI') {
+        firmaImagenTI = null;
+        document.getElementById('previewFirmaTI').src = '';
+        document.getElementById('previewWrapTI').style.display = 'none';
+        document.getElementById('inputFirmaTI').value = '';
+    } else {
+        firmaImagenOtra = null;
+        document.getElementById('previewFirmaOtra').src = '';
+        document.getElementById('previewWrapOtra').style.display = 'none';
+        document.getElementById('inputFirmaOtra').value = '';
+    }
+}
+
+// ---- MODALIDAD "OTRO" ----
 document.querySelectorAll('input[name="modalidad"]').forEach(radio => {
     radio.addEventListener('change', () => {
         const otroTexto = document.getElementById('modalidadOtroTexto');
@@ -11,6 +62,7 @@ document.querySelectorAll('input[name="modalidad"]').forEach(radio => {
     });
 });
 
+// ---- MARCA SELECT con botón volver ----
 document.querySelectorAll('.marca-select').forEach(select => {
     select.addEventListener('change', function() {
         const otroInput = this.parentElement.querySelector('.marca-otro');
@@ -41,6 +93,7 @@ document.querySelectorAll('.btn-volver-marca').forEach(btn => {
     });
 });
 
+// ---- AJUSTAR CANVAS ----
 function ajustarCanvas(canvas) {
     const ratio = Math.max(window.devicePixelRatio || 1, 1);
     canvas.width = canvas.offsetWidth * ratio;
@@ -52,11 +105,13 @@ canvasOtraParte.style.height = '100px';
 ajustarCanvas(canvasAreaTI);
 ajustarCanvas(canvasOtraParte);
 
+// ---- LIMPIAR FIRMA (pad de dibujo) ----
 function limpiarFirma(id) {
-    if (id === 'firmaAreaTI') firmaTI.clear();
+    if (id === 'firmaAreaTI')   firmaTI.clear();
     if (id === 'firmaOtraParte') firmaOtra.clear();
 }
 
+// ---- OBTENER VALOR DE RADIO BUTTON ----
 function getRadioValue(name) {
     const selected = document.querySelector(`input[name="${name}"]:checked`);
     if (!selected) return '';
@@ -67,6 +122,7 @@ function getRadioValue(name) {
     return selected.value;
 }
 
+// ---- RECOGER DATOS DE LA TABLA ----
 function getDatosTabla() {
     const filas = document.querySelectorAll('#tablaEquipamiento tbody tr');
     const datos = [];
@@ -140,8 +196,13 @@ function generarPDF() {
     const W = PW - M * 2;
     let y = M;
 
+    // ---- Determinar qué datos de firma usar ----
+    // Prioridad: imagen subida > pad dibujado
+    const firmaTIData   = firmaImagenTI   || (!firmaTI.isEmpty()   ? firmaTI.toDataURL('image/png')   : null);
+    const firmaOtraData = firmaImagenOtra || (!firmaOtra.isEmpty()  ? firmaOtra.toDataURL('image/png') : null);
+
     // ==============================
-    // CABECERA: logo izquierda
+    // CABECERA: logo
     // ==============================
     const logoImg = document.querySelector('.cabecera-logo-completo');
     let logoH = 0;
@@ -169,7 +230,7 @@ function generarPDF() {
     y += 4;
 
     // ==============================
-    // TÍTULO centrado, subrayado
+    // TÍTULO
     // ==============================
     doc.setFontSize(10); doc.setFont('helvetica','bold');
     doc.setTextColor(0,122,51);
@@ -181,23 +242,20 @@ function generarPDF() {
     doc.setTextColor(0,0,0);
     y += 5;
 
-    const operacion = getRadioValue('operacion');
-    const fechaRaw  = document.getElementById('fecha').value;
+    const operacion    = getRadioValue('operacion');
+    const fechaRaw     = document.getElementById('fecha').value;
     const fechaMostrar = fechaRaw ? fechaRaw.split('-').reverse().join('/') : '';
-    const modalidad = getRadioValue('modalidad');
+    const modalidad    = getRadioValue('modalidad');
 
     // ==============================
     // SECCIÓN 1
     // ==============================
-    // Calcular altura sección 1
-    // barra + fila operacion/tique/fecha + fila modalidad + padding
     const s1H = 5 + 2.5 + 3 + 9.7 + 2 + 3 + 3 + 2;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
     doc.rect(M, y, W, s1H);
     const afterSec1Header = drawSeccionHeader(doc, '1. Datos Generales', M, y, W);
     let sy = afterSec1Header + 2;
 
-    // Fila: Operación (col1) | N.º Tique (col2) | Fecha (col3)
     const col3W = W / 3;
     doc.setFontSize(6); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
     doc.text('Operación', M+1, sy+2.5);
@@ -206,12 +264,10 @@ function generarPDF() {
     rx = drawRadio(doc, 'Entrega',  operacion==='Entrega',  rx, sy);
     rx = drawRadio(doc, 'Recogida', operacion==='Recogida', rx, sy);
 
-    // Tique y Fecha en misma fila
     drawCampo(doc, 'N.º Tique', document.getElementById('nTique').value, M+col3W,   afterSec1Header+2, col3W-1);
     drawCampo(doc, 'Fecha',     fechaMostrar,                             M+col3W*2, afterSec1Header+2, col3W-1);
     sy += 5.5;
 
-    // Modalidad
     doc.setFontSize(6); doc.setFont('helvetica','normal'); doc.setTextColor(80,80,80);
     doc.text('Modalidad', M+1, sy+2.5);
     sy += 3.2;
@@ -228,7 +284,7 @@ function generarPDF() {
     // ==============================
     // SECCIÓN 2
     // ==============================
-    const hW = W/2 - 1;
+    const hW  = W/2 - 1;
     const s2H = 5 + 2.5 + 3 + (9.7*2) + 5;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.3);
     doc.rect(M, y, W, s2H);
@@ -243,11 +299,11 @@ function generarPDF() {
     ex = drawRadio(doc, 'Proveedor',     tipoEntrega==='Proveedor',     ex, sy);
     sy += 5;
 
-    drawCampo(doc, 'Nombre',   document.getElementById('entNombre').value,  M+0.5,    sy, hW-0.5);
-    drawCampo(doc, 'DNI',      document.getElementById('entDNI').value,     M+hW+1,   sy, hW);
+    drawCampo(doc, 'Nombre',   document.getElementById('entNombre').value,  M+0.5,  sy, hW-0.5);
+    drawCampo(doc, 'DNI',      document.getElementById('entDNI').value,     M+hW+1, sy, hW);
     sy += 9.7;
-    drawCampo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M+0.5,    sy, hW-0.5);
-    drawCampo(doc, 'Teléfono', document.getElementById('entTelf').value,    M+hW+1,   sy, hW);
+    drawCampo(doc, 'Empresa',  document.getElementById('entEmpresa').value, M+0.5,  sy, hW-0.5);
+    drawCampo(doc, 'Teléfono', document.getElementById('entTelf').value,    M+hW+1, sy, hW);
     y += s2H + 1.5;
 
     // ==============================
@@ -267,11 +323,11 @@ function generarPDF() {
     rx2 = drawRadio(doc, 'Proveedor',     tipoRecoge==='Proveedor',     rx2, sy);
     sy += 5;
 
-    drawCampo(doc, 'Nombre',   document.getElementById('recNombre').value,  M+0.5,    sy, hW-0.5);
-    drawCampo(doc, 'DNI',      document.getElementById('recDNI').value,     M+hW+1,   sy, hW);
+    drawCampo(doc, 'Nombre',   document.getElementById('recNombre').value,  M+0.5,  sy, hW-0.5);
+    drawCampo(doc, 'DNI',      document.getElementById('recDNI').value,     M+hW+1, sy, hW);
     sy += 9.7;
-    drawCampo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M+0.5,    sy, hW-0.5);
-    drawCampo(doc, 'Teléfono', document.getElementById('recTelf').value,    M+hW+1,   sy, hW);
+    drawCampo(doc, 'Empresa',  document.getElementById('recEmpresa').value, M+0.5,  sy, hW-0.5);
+    drawCampo(doc, 'Teléfono', document.getElementById('recTelf').value,    M+hW+1, sy, hW);
     y += s3H + 1.5;
 
     // ==============================
@@ -288,7 +344,6 @@ function generarPDF() {
     const afterTablaH = drawSeccionHeader(doc, 'Datos del equipamiento informático entregado o recogido', M, y, W);
     sy = afterTablaH;
 
-    // Cabecera tabla oscura
     doc.setFillColor(33,37,41);
     doc.rect(M, sy, W, rowH, 'F');
     doc.setTextColor(255,255,255);
@@ -339,12 +394,12 @@ function generarPDF() {
     y += legalH + 1.5;
 
     // ==============================
-    // FIRMAS — ocupan el espacio restante
+    // FIRMAS
     // ==============================
     const espacioRestante = PH - M - y;
-    const labelH = 5;
-    const firmaH = Math.max(espacioRestante - labelH - 1, 12);
-    const firmaW = W/2 - 3;
+    const labelH  = 5;
+    const firmaH  = Math.max(espacioRestante - labelH - 1, 12);
+    const firmaW  = W/2 - 3;
 
     doc.setFontSize(7.5); doc.setFont('helvetica','bold');
     doc.text('Firma del Área TI',      M + firmaW/2,          y+3.5, {align:'center'});
@@ -355,11 +410,14 @@ function generarPDF() {
     doc.rect(M,          y, firmaW, firmaH);
     doc.rect(M+firmaW+6, y, firmaW, firmaH);
 
-    // Insertar firmas preservando aspect ratio lógico (100px alto fijo)
+    // Insertar firma manteniendo proporciones
     const insertarFirma = (dataURL, fx, fy, fw, fh) => {
-        const logicW = fw * 3; // ancho lógico aproximado del canvas
-        const logicH = 100;    // alto lógico fijo (definido en ajustarCanvas)
-        const ratio = logicW / logicH;
+        const img = new Image();
+        img.src = dataURL;
+        // Calculamos proporciones reales de la imagen
+        const naturalW = img.naturalWidth  || fw * 3;
+        const naturalH = img.naturalHeight || 100;
+        const ratio = naturalW / naturalH;
         let iw = fw * 0.85, ih = iw / ratio;
         if (ih > fh * 0.85) { ih = fh * 0.85; iw = ih * ratio; }
         const ix = fx + (fw - iw) / 2;
@@ -367,13 +425,11 @@ function generarPDF() {
         doc.addImage(dataURL, 'PNG', ix, iy, iw, ih);
     };
 
-    if (!firmaTI.isEmpty())
-        insertarFirma(firmaTI.toDataURL('image/png'),   M+1,        y+1, firmaW-2, firmaH-2);
-    if (!firmaOtra.isEmpty())
-        insertarFirma(firmaOtra.toDataURL('image/png'), M+firmaW+7, y+1, firmaW-2, firmaH-2);
+    if (firmaTIData)   insertarFirma(firmaTIData,   M+1,        y+1, firmaW-2, firmaH-2);
+    if (firmaOtraData) insertarFirma(firmaOtraData, M+firmaW+7, y+1, firmaW-2, firmaH-2);
 
     // ==============================
-    // NOMBRE ARCHIVO
+    // NOMBRE DEL ARCHIVO
     // ==============================
     const operacionFinal  = getRadioValue('operacion') || 'SinOperacion';
     const esPrestamo      = document.getElementById('modPrestamo').checked;

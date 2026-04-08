@@ -83,7 +83,7 @@
         </div>
 
         <!-- FECHA DE FIRMA -->
-            <div class="mt-5 text-center">
+        <div class="mt-5 text-center">
             <span>En&nbsp;</span>
             <input type="text" class="campo-inline" id="ciudad" style="width:150px;">
             <span>, a&nbsp;</span>
@@ -99,7 +99,22 @@
             <p class="mb-1"><strong>Firma</strong></p>
             <p class="mb-0">Usuario:</p>
             <canvas id="firmaUsuario" class="firma-canvas mt-2"></canvas>
-            <br>
+
+            <div class="firma-separador">
+                <span class="firma-o">ó</span>
+            </div>
+
+            <div class="firma-upload-area">
+                <label for="inputFirmaUsuario" class="btn-subir-firma">
+                    📎 Subir imagen de firma
+                </label>
+                <input type="file" id="inputFirmaUsuario" accept="image/png, image/jpeg, image/jpg" style="display:none;">
+                <div class="firma-preview-wrap" id="previewWrapUsuario" style="display:none;">
+                    <img id="previewFirmaUsuario" class="firma-preview-img" alt="Firma Usuario">
+                    <button type="button" class="btn-quitar-firma" onclick="quitarFirmaImagen()">✕ Quitar</button>
+                </div>
+            </div>
+
             <button type="button" class="btn btn-sm btn-outline-secondary mt-2" id="btnLimpiarFirma" onclick="limpiarFirma()">Limpiar</button>
         </div>
 
