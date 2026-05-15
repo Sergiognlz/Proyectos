@@ -1,0 +1,3 @@
+Entorno de Pruebas: https://at-t1.sandetel.es
+
+Traducido: una vez actives el SSO, no podrás entrar con tu usuario normal a menos que uses la URL https://areatic-test2.sandetel.int/login?direct=1. Guárdatela.

@@ -1,0 +1,11 @@
+Sergio Gonzalez Chacón		048664fa-9063-1040-8e2e-3328d5de49f3_9566
+Javier Martin Cruz		7b9bb1fa-0141-1040-8b09-1527633c1823
+Federico Calderon Navarro	80cd52dc-0141-1040-8bc4-1527633c1823 	
+Francisco Sánchez Balsera 	a0c87ada-0141-1040-91cc-1527633c1823
+Areatic Sop Sandetel 		ad1b2cb0-0141-1040-95dd-1527633c1823
+Areatic Coord Sandetel 		ad1e6394-0141-1040-95df-1527633c1823
+admin 				admin
+Gestion.gpt 			aecc7df2-0141-1040-9671-1527633c1823
+areati Otp Sandetel 		b3e991b2-0141-1040-9822-1527633c1823
+Areatic Adm Sandetel 		b4594958-0141-1040-9848-1527633c1823
+Areatic Control Sandetel 	b64bd064-0141-1040-98d4-1527633c1823

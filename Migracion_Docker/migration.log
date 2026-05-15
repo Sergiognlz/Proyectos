@@ -1,0 +1,605 @@
+2026-05-04 13:22:28,171 [INFO] *** MODO DRY-RUN: no se creará nada en Nextcloud Deck ***
+2026-05-04 13:22:28,174 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-04 13:22:28,174 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-04 13:22:28,175 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-04 13:22:28,175 [INFO] 
+============================================================
+2026-05-04 13:22:28,175 [INFO] Migrando: 'ATI - ESTRATEGIA 2024'
+2026-05-04 13:22:28,175 [INFO] ============================================================
+2026-05-04 13:22:28,176 [INFO]   [DRY-RUN] POST /boards → {"title": "ATI - ESTRATEGIA 2024", "color": "2980B9"}
+2026-05-04 13:22:28,176 [INFO]   Board creado en Deck: id=25829
+2026-05-04 13:22:28,177 [INFO]   Labels creadas: 0
+2026-05-04 13:22:28,177 [INFO]   Sin swimlanes adicionales — stacks directos
+2026-05-04 13:22:28,177 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "CONTRATACI\u00d3N", "order": 1}
+2026-05-04 13:22:28,177 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "SEGURIDAD", "order": 2}
+2026-05-04 13:22:28,177 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "PUESTO TRABAJO", "order": 3}
+2026-05-04 13:22:28,177 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "SISTEMAS", "order": 4}
+2026-05-04 13:22:28,177 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "STOP", "order": 5}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "PRODUCCI\u00d3N (Revisar)", "order": 6}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "TI HORIZONTAL", "order": 7}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "GESTION", "order": 8}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks → {"title": "DATOS", "order": 9}
+2026-05-04 13:22:28,178 [INFO]   Stacks creados: 9
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Recopilar Tareas Seguridad", "type": "plain", "order": -5}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/92398/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:28,178 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/92398/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:28,279 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Formaci\u00f3n PBI (Profesional Cloud)", "type": "plain", "order": -4}
+2026-05-04 13:22:28,280 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/38978/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:28,380 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "SW Autoservicio de Claves de Dominio", "type": "plain", "order": -4}
+2026-05-04 13:22:28,381 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/8602/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:28,482 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Flexxible", "type": "plain", "order": -3}
+2026-05-04 13:22:28,482 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/89404/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:28,483 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/89404/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:28,584 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Proyecto TCAA", "type": "plain", "order": -3}
+2026-05-04 13:22:28,585 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:28,585 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "7b9bb1fa-0141-1040-8b09-1527633c1823"}
+2026-05-04 13:22:28,586 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:28,587 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:28,587 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:28,588 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/95542/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:28,689 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Medios Audiovisuales + Agora", "type": "plain", "order": -2.5}
+2026-05-04 13:22:28,689 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/37579/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:28,790 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato IA (Generador Pliegos)", "type": "plain", "order": -2}
+2026-05-04 13:22:28,790 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/71608/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:28,891 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Nueva VPN RCJA con chequeos de seguridad", "type": "plain", "order": -2}
+2026-05-04 13:22:28,892 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/32895/assignUser → {"userId": "7b9bb1fa-0141-1040-8b09-1527633c1823"}
+2026-05-04 13:22:28,992 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Acceso por defecto de los usuarios Internos y Externos", "type": "plain", "order": -1}
+2026-05-04 13:22:28,993 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/22957/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:28,993 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/22957/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:29,094 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "Soporte en HD para Agenda de Tramitaci\u00f3n de Expedientes (HD)", "type": "plain", "order": -1}
+2026-05-04 13:22:29,095 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/39598/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,095 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/39598/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:29,196 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Sensibilizaci\u00f3n y Concienciaci\u00f3n [SmartFence]", "type": "plain", "order": -0.1875}
+2026-05-04 13:22:29,196 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/85362/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,197 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/85362/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:29,298 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Proyecto IA (Asistente Virtual xa Usuarios Internos)", "type": "plain", "order": -0.125}
+2026-05-04 13:22:29,298 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/87041/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,399 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Asesoramiento MS", "type": "plain", "order": 0}
+2026-05-04 13:22:29,399 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/14361/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,400 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/14361/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:29,501 [INFO]   [DRY-RUN] POST /boards/25829/stacks/93036/cards → {"title": "Encuestas NAOS", "type": "plain", "order": 0}
+2026-05-04 13:22:29,501 [INFO]   [DRY-RUN] POST /boards/25829/stacks/93036/cards/61709/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,501 [INFO]   [DRY-RUN] POST /boards/25829/stacks/93036/cards/61709/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:29,602 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "Limpieza usuarios Dominio", "type": "plain", "order": 0}
+2026-05-04 13:22:29,603 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/81384/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:29,704 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Certificaci\u00f3n ENS\n- Formaci\u00f3n y Concienciaci\u00f3n (Bolet\u00edn ZD)\n- Revisi\u00f3n Normativa",
+2026-05-04 13:22:29,704 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/1028/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:29,704 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/1028/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:29,805 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards → {"title": "Proyecto PBI:\n- Reporting y Consultor\u00eda\n- Formaci\u00f3n\n- Portal de Informes", "type": "plain", "ord
+2026-05-04 13:22:29,806 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards/31455/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:29,907 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Gesti\u00f3n SW Herramienta de Auditor\u00eda de Ficheros (Quest)", "type": "plain", "order": 0.25}
+2026-05-04 13:22:29,908 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/3329/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:29,908 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/3329/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,009 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Aplicaci\u00f3n PAM (COMSEG)", "type": "plain", "order": 0.375}
+2026-05-04 13:22:30,010 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/24196/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:30,010 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/24196/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,011 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/24196/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:30,112 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato SW Metadatos", "type": "plain", "order": 0.5}
+2026-05-04 13:22:30,113 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/5651/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,113 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/5651/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:30,214 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Aplicaciones NoCode:\n- Project Managger\n- NoCoDB\n- Newsletter\n- Mapas Mentales", "type": "plain", "order"
+2026-05-04 13:22:30,214 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/27891/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,215 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/27891/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:30,316 [INFO]   [DRY-RUN] POST /boards/25829/stacks/93036/cards → {"title": "Contrato Compra SW Secure CRT", "type": "plain", "order": 1}
+2026-05-04 13:22:30,317 [INFO]   [DRY-RUN] POST /boards/25829/stacks/93036/cards/20743/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,418 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Nuevo EDR (CrowdStrike)", "type": "plain", "order": 1}
+2026-05-04 13:22:30,419 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/99245/assignUser → {"userId": "7b9bb1fa-0141-1040-8b09-1527633c1823"}
+2026-05-04 13:22:30,520 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "GATE2 (COMSEG) -> BMC?", "type": "plain", "order": 1}
+2026-05-04 13:22:30,521 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/82386/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,521 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/82386/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:30,621 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "Informes de Proceso (Calidad)", "type": "plain", "order": 1}
+2026-05-04 13:22:30,622 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/61682/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,623 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/61682/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:30,724 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards → {"title": "Proyecto Oficina del Dato", "type": "plain", "order": 1}
+2026-05-04 13:22:30,724 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards/57304/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:30,825 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Proced./IT Comprobaciones y chequeos de Seguridad de usuarios: VPN, LDAP, Quest...", "type": "plain", "order"
+2026-05-04 13:22:30,826 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/43630/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:30,826 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/43630/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:30,826 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/43630/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:30,827 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/43630/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:30,928 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Gestion EPP + EDR + M\u00f3dulos", "type": "plain", "order": 1.5}
+2026-05-04 13:22:30,929 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/68542/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:30,929 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/68542/assignUser → {"userId": "7b9bb1fa-0141-1040-8b09-1527633c1823"}
+2026-05-04 13:22:31,030 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "PROCEDIMENTAR Y AUTOMATIZAR BAJAS DE ACCESOS A LA INFRAESTRUCTURA TIC DE SDT (COMSEG)", "type": "plain", "ord
+2026-05-04 13:22:31,030 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/23314/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,030 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/23314/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:31,030 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/23314/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:31,031 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/23314/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:31,131 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "Renovaci\u00f3n Contrato Quest", "type": "plain", "order": 1.75}
+2026-05-04 13:22:31,131 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/8032/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,232 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Proyecto ITSM/DWP BMC", "type": "plain", "order": 1.75, "description": "Est\u00e1 Jos\u00e9 Andr\u00e9s tb po
+2026-05-04 13:22:31,232 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/61674/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:31,233 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/61674/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,233 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/61674/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:31,233 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/61674/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:31,334 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Formaci\u00f3n PBI", "type": "plain", "order": 2}
+2026-05-04 13:22:31,334 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/89849/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,335 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/89849/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:31,435 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Actualizar BISTI para Datos de JP y Encargos (Sebas)", "type": "plain", "order": 2}
+2026-05-04 13:22:31,436 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/58801/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:31,537 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Revisi\u00f3n equipos con permisos de administraci\u00f3n Local (COMSEG)", "type": "plain", "order": 2}
+2026-05-04 13:22:31,538 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/40235/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,538 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/40235/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:31,639 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "Control Usuarios y Accesos Externos", "type": "plain", "order": 2}
+2026-05-04 13:22:31,640 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/54782/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:31,741 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards → {"title": "Cuadro de Mandos ATI", "type": "plain", "order": 2}
+2026-05-04 13:22:31,742 [INFO]   [DRY-RUN] POST /boards/25829/stacks/37076/cards/62262/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:31,843 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "SOPORTE 24X7 SEGURIDAD (COMSEG)", "type": "plain", "order": 2.5}
+2026-05-04 13:22:31,843 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/30073/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:31,844 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/30073/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:31,844 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/30073/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:31,844 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/30073/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:31,845 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/30073/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:31,945 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Auditor\u00eda Directorio Activo (GLAN)", "type": "plain", "order": 2.75}
+2026-05-04 13:22:31,946 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/88427/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:31,947 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/88427/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:32,048 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Compra SW Encriptaci\u00f3n Linux", "type": "plain", "order": 3}
+2026-05-04 13:22:32,049 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/92118/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,150 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Contrase\u00f1as como Servicio", "type": "plain", "order": 3}
+2026-05-04 13:22:32,150 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/30719/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,151 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/30719/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:32,252 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Actualizaci\u00f3n Servidores de Dominio", "type": "plain", "order": 3}
+2026-05-04 13:22:32,252 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/31903/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:32,353 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "Top 10 Accesos Internos: RCJA + GLAN (DG)", "type": "plain", "order": 3.5}
+2026-05-04 13:22:32,354 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/52810/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,354 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/52810/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:32,455 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "Nueva Intranet (DG) -> BMC?", "type": "plain", "order": 4}
+2026-05-04 13:22:32,455 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/88675/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,455 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/88675/assignUser → {"userId": "b3e991b2-0141-1040-9822-1527633c1823"}
+2026-05-04 13:22:32,556 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Proced. Renovaci\u00f3n de Claves Servidores y Aplicaciones", "type": "plain", "order": 4}
+2026-05-04 13:22:32,557 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/12247/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:32,557 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/12247/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,558 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/12247/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:32,659 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "Revisi\u00f3n de Usuarios con Acceso a ARCHIVO + Quest", "type": "plain", "order": 4}
+2026-05-04 13:22:32,659 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/40212/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:32,660 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/40212/assignUser → {"userId": "b4594958-0141-1040-9848-1527633c1823"}
+2026-05-04 13:22:32,760 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Soporte NextCloud", "type": "plain", "order": 5}
+2026-05-04 13:22:32,761 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/65926/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,862 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards → {"title": "Contrato Soporte Kanban", "type": "plain", "order": 6}
+2026-05-04 13:22:32,863 [INFO]   [DRY-RUN] POST /boards/25829/stacks/11263/cards/38245/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:32,963 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Migrar GLPI a BMC", "type": "plain", "order": 6}
+2026-05-04 13:22:32,964 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/59334/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,065 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Acceso SSO para aplicaciones internas del ATI", "type": "plain", "order": 6}
+2026-05-04 13:22:33,066 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/12231/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:33,166 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "Proced. Onboard y Offboard RRHH", "type": "plain", "order": 7}
+2026-05-04 13:22:33,167 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/72994/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,167 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/72994/assignUser → {"userId": "a0c87ada-0141-1040-91cc-1527633c1823"}
+2026-05-04 13:22:33,268 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Actualizar logos en Aplicaciones ATI", "type": "plain", "order": 7}
+2026-05-04 13:22:33,268 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/58985/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:33,369 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Limitar el acceso por APN y VPN por defecto (Internos y Externos)", "type": "plain", "order": 7}
+2026-05-04 13:22:33,369 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/74491/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:33,370 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/74491/assignUser → {"userId": "7b9bb1fa-0141-1040-8b09-1527633c1823"}
+2026-05-04 13:22:33,370 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/74491/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,471 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "POL\u00cdTICA DE ARCHIVO (COMSEG)", "type": "plain", "order": 7}
+2026-05-04 13:22:33,471 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/13380/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:33,472 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/13380/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,573 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Control de Licencias SW", "type": "plain", "order": 7}
+2026-05-04 13:22:33,573 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/52514/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,574 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/52514/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:33,674 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": "Ver caducidad en accesos LDAP a las aplicaciones ATI", "type": "plain", "order": 8}
+2026-05-04 13:22:33,675 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards/22458/assignUser → {"userId": "ad1b2cb0-0141-1040-95dd-1527633c1823"}
+2026-05-04 13:22:33,776 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "HERRAMIENTAS PARA SECURIZACI\u00d3N DEL DIRECTORIO ACTIVO Y GESTI\u00d3N DE METADATOS (COMSEG)", "type": "pla
+2026-05-04 13:22:33,776 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/26840/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:33,776 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/26840/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,877 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "NAOS SDT: Completar Servicios Internos que faltan", "type": "plain", "order": 9}
+2026-05-04 13:22:33,878 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/17115/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:33,878 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/17115/assignUser → {"userId": "b3e991b2-0141-1040-9822-1527633c1823"}
+2026-05-04 13:22:33,979 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "ELIMINAR SHADOW IT Y APLICACIONES POPULARES CON RIESGOS DE SEGURIDAD (COMSEG)", "type": "plain", "order": 9}
+2026-05-04 13:22:33,980 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/56430/assignUser → {"userId": "aecc7df2-0141-1040-9671-1527633c1823"}
+2026-05-04 13:22:33,980 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/56430/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:34,081 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Boletin ZD", "type": "plain", "order": 9}
+2026-05-04 13:22:34,082 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/38160/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,082 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/38160/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:34,183 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "CONSENTIMIENTO INFORMADO PARA NORMATIVA DE SEGURIDAD DEL PERSONAL INTERNO (COMSEG)", "type": "plain", "order"
+2026-05-04 13:22:34,183 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/3532/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,183 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/3532/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:34,284 [INFO]   [DRY-RUN] POST /boards/25829/stacks/36929/cards → {"title": ".ES para aplicaciones internas?", "type": "plain", "order": 10}
+2026-05-04 13:22:34,385 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "Formaci\u00f3n Usuarios Internos", "type": "plain", "order": 10}
+2026-05-04 13:22:34,386 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/30878/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,487 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards → {"title": "APLICAR NORMATIVA DE SEGURIDAD A EMPRESAS COLABORADORAS (COMSEG)", "type": "plain", "order": 10}
+2026-05-04 13:22:34,487 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/13444/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,488 [INFO]   [DRY-RUN] POST /boards/25829/stacks/19366/cards/13444/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:34,589 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Control Presupuestario Trimestral", "type": "plain", "order": 10}
+2026-05-04 13:22:34,589 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/29318/assignUser → {"userId": "b64bd064-0141-1040-98d4-1527633c1823"}
+2026-05-04 13:22:34,690 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Actualizar Informaci\u00f3n Web SDT", "type": "plain", "order": 10.25}
+2026-05-04 13:22:34,691 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/65660/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,792 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Renovar Sello Entidad", "type": "plain", "order": 10.5}
+2026-05-04 13:22:34,793 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/79144/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,893 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards → {"title": "Piloto Securizaci\u00f3n Certificados Personales", "type": "plain", "order": 11}
+2026-05-04 13:22:34,894 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/86442/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:34,894 [INFO]   [DRY-RUN] POST /boards/25829/stacks/91820/cards/86442/assignUser → {"userId": "ad1e6394-0141-1040-95df-1527633c1823"}
+2026-05-04 13:22:34,995 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards → {"title": "Piloto Escritorio Remoto con IAPH/TeknoService", "type": "plain", "order": 11}
+2026-05-04 13:22:34,996 [INFO]   [DRY-RUN] POST /boards/25829/stacks/57646/cards/95366/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:35,097 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards → {"title": "Nueva Aplicaci\u00f3n RRHH", "type": "plain", "order": 11}
+2026-05-04 13:22:35,098 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/2800/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:35,098 [INFO]   [DRY-RUN] POST /boards/25829/stacks/82140/cards/2800/assignUser → {"userId": "b3e991b2-0141-1040-9822-1527633c1823"}
+2026-05-04 13:22:35,199 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Comit\u00e9 T\u00e9cnico de Seguridad", "type": "plain", "order": 11}
+2026-05-04 13:22:35,199 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/29028/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:35,300 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards → {"title": "Nuevo Contrato de Renting", "type": "plain", "order": 12}
+2026-05-04 13:22:35,301 [INFO]   [DRY-RUN] POST /boards/25829/stacks/28503/cards/56538/assignUser → {"userId": "80cd52dc-0141-1040-8bc4-1527633c1823"}
+2026-05-04 13:22:35,402 [INFO]   Cards migradas: 71 | Saltadas: 1
+2026-05-04 13:22:35,403 [INFO]   Comentarios migrados: 0
+2026-05-04 13:22:35,403 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,403 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,404 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,404 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,405 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,405 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,405 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,405 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,406 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,406 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,406 [INFO]   [DRY-RUN] PUT /boards/25829/acl
+2026-05-04 13:22:35,406 [INFO]   ACL configurado para 11 miembros activos
+2026-05-04 13:22:35,406 [INFO] 
+============================================================
+2026-05-04 13:22:35,407 [INFO] RESUMEN DE MIGRACIÓN
+2026-05-04 13:22:35,407 [INFO] ============================================================
+2026-05-04 13:22:35,407 [INFO] ✅ 'ATI - ESTRATEGIA 2024'
+2026-05-04 13:22:35,407 [INFO]    Stacks (columnas): 9
+2026-05-04 13:22:35,407 [INFO]    Cards migradas:    71
+2026-05-04 13:22:35,408 [INFO]    Cards saltadas:    1
+2026-05-04 13:22:35,408 [INFO]    Comentarios:       0
+2026-05-04 13:22:35,408 [INFO]    Labels:            0
+2026-05-04 13:22:35,409 [INFO] 
+Log completo guardado en: migration.log
+2026-05-04 13:24:47,354 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-04 13:24:47,355 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-04 13:24:47,355 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-04 13:24:50,339 [ERROR] Conexión con Nextcloud Deck: ❌ FALLO — 404 Client Error: Not Found for url: https://at-t1.sandetel.es/ocs/v2.php/apps/deck/api/v1.0/boards
+2026-05-04 13:24:50,340 [ERROR] No se puede conectar a Nextcloud Deck. Verifica URL y credenciales.
+2026-05-04 13:28:03,141 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-04 13:28:03,142 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-04 13:28:03,142 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-04 13:30:04,524 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-04 13:30:04,525 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-04 13:30:04,525 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-04 13:30:07,625 [INFO] Conexión con Nextcloud Deck: ✅ OK
+2026-05-04 13:30:07,626 [INFO] 
+============================================================
+2026-05-04 13:30:07,626 [INFO] Migrando: 'ATI - ESTRATEGIA 2024'
+2026-05-04 13:30:07,627 [INFO] ============================================================
+2026-05-04 13:30:10,692 [INFO]   Board creado en Deck: id=4
+2026-05-04 13:30:10,692 [INFO]   Labels creadas: 0
+2026-05-04 13:30:10,693 [INFO]   Sin swimlanes adicionales — stacks directos
+2026-05-04 13:30:39,358 [INFO]   Stacks creados: 9
+2026-05-04 13:30:44,770 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/19/assignUser
+2026-05-04 13:30:47,466 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/19/assignUser
+2026-05-04 13:30:53,959 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/20/assignUser
+2026-05-04 13:30:59,562 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/21/assignUser
+2026-05-04 13:31:05,808 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/22/assignUser
+2026-05-04 13:31:08,445 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/22/assignUser
+2026-05-04 13:31:13,971 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:17,001 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:19,671 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:22,618 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:25,376 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:27,990 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/23/assignUser
+2026-05-04 13:31:34,564 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/24/assignUser
+2026-05-04 13:31:40,176 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/25/assignUser
+2026-05-04 13:31:48,568 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/26/assignUser
+2026-05-04 13:31:54,256 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/27/assignUser
+2026-05-04 13:31:57,016 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/27/assignUser
+2026-05-04 13:32:02,714 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/28/assignUser
+2026-05-04 13:32:05,508 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/28/assignUser
+2026-05-04 13:32:11,263 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/29/assignUser
+2026-05-04 13:32:13,888 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/29/assignUser
+2026-05-04 13:32:19,608 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/30/assignUser
+2026-05-04 13:32:25,157 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/31/assignUser
+2026-05-04 13:32:27,771 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/31/assignUser
+2026-05-04 13:32:33,370 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/15/cards/32/assignUser
+2026-05-04 13:32:35,994 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/15/cards/32/assignUser
+2026-05-04 13:32:41,471 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/33/assignUser
+2026-05-04 13:32:46,984 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/34/assignUser
+2026-05-04 13:32:49,841 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/34/assignUser
+2026-05-04 13:32:55,795 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/19/cards/35/assignUser
+2026-05-04 13:33:01,663 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/36/assignUser
+2026-05-04 13:33:04,546 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/36/assignUser
+2026-05-04 13:33:10,559 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/37/assignUser
+2026-05-04 13:33:13,485 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/37/assignUser
+2026-05-04 13:33:16,294 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/37/assignUser
+2026-05-04 13:33:22,749 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/38/assignUser
+2026-05-04 13:33:25,857 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/38/assignUser
+2026-05-04 13:33:31,848 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/39/assignUser
+2026-05-04 13:33:34,644 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/39/assignUser
+2026-05-04 13:33:40,852 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/15/cards/40/assignUser
+2026-05-04 13:33:46,886 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/41/assignUser
+2026-05-04 13:33:52,744 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/42/assignUser
+2026-05-04 13:33:56,425 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/42/assignUser
+2026-05-04 13:34:02,715 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/43/assignUser
+2026-05-04 13:34:05,696 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/43/assignUser
+2026-05-04 13:34:12,616 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/19/cards/44/assignUser
+2026-05-04 13:34:18,070 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/45/assignUser
+2026-05-04 13:34:20,811 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/45/assignUser
+2026-05-04 13:34:23,562 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/45/assignUser
+2026-05-04 13:34:26,206 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/45/assignUser
+2026-05-04 13:34:31,946 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/46/assignUser
+2026-05-04 13:34:34,751 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/46/assignUser
+2026-05-04 13:34:40,511 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/47/assignUser
+2026-05-04 13:34:43,325 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/47/assignUser
+2026-05-04 13:34:46,235 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/47/assignUser
+2026-05-04 13:34:49,040 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/47/assignUser
+2026-05-04 13:34:55,053 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/48/assignUser
+2026-05-04 13:35:00,925 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/49/assignUser
+2026-05-04 13:35:03,631 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/49/assignUser
+2026-05-04 13:35:06,504 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/49/assignUser
+2026-05-04 13:35:09,349 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/49/assignUser
+2026-05-04 13:35:14,971 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/50/assignUser
+2026-05-04 13:35:17,650 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/50/assignUser
+2026-05-04 13:35:23,414 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/51/assignUser
+2026-05-04 13:35:28,962 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/52/assignUser
+2026-05-04 13:35:31,691 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/52/assignUser
+2026-05-04 13:35:37,101 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/53/assignUser
+2026-05-04 13:35:42,585 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/19/cards/54/assignUser
+2026-05-04 13:35:48,206 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/55/assignUser
+2026-05-04 13:35:51,003 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/55/assignUser
+2026-05-04 13:35:53,843 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/55/assignUser
+2026-05-04 13:35:56,561 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/55/assignUser
+2026-05-04 13:35:59,234 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/55/assignUser
+2026-05-04 13:36:04,799 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/56/assignUser
+2026-05-04 13:36:07,824 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/56/assignUser
+2026-05-04 13:36:13,940 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/57/assignUser
+2026-05-04 13:36:19,508 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/58/assignUser
+2026-05-04 13:36:22,226 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/58/assignUser
+2026-05-04 13:36:27,999 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/59/assignUser
+2026-05-04 13:36:33,568 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/60/assignUser
+2026-05-04 13:36:36,320 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/60/assignUser
+2026-05-04 13:36:45,615 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/61/assignUser
+2026-05-04 13:36:48,254 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/61/assignUser
+2026-05-04 13:36:54,993 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/62/assignUser
+2026-05-04 13:36:57,839 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/62/assignUser
+2026-05-04 13:37:00,606 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/62/assignUser
+2026-05-04 13:37:06,410 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/63/assignUser
+2026-05-04 13:37:09,311 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/63/assignUser
+2026-05-04 13:37:15,839 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/64/assignUser
+2026-05-04 13:37:21,559 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/11/cards/65/assignUser
+2026-05-04 13:37:27,146 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/66/assignUser
+2026-05-04 13:37:32,712 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/67/assignUser
+2026-05-04 13:37:38,711 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/68/assignUser
+2026-05-04 13:37:41,558 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/68/assignUser
+2026-05-04 13:37:47,061 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/69/assignUser
+2026-05-04 13:37:52,650 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/70/assignUser
+2026-05-04 13:37:55,505 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/70/assignUser
+2026-05-04 13:37:58,135 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/70/assignUser
+2026-05-04 13:38:03,668 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/71/assignUser
+2026-05-04 13:38:07,207 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/71/assignUser
+2026-05-04 13:38:13,093 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/72/assignUser
+2026-05-04 13:38:15,831 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/72/assignUser
+2026-05-04 13:38:21,470 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/14/cards/73/assignUser
+2026-05-04 13:38:27,271 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/74/assignUser
+2026-05-04 13:38:29,907 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/74/assignUser
+2026-05-04 13:38:35,868 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/75/assignUser
+2026-05-04 13:38:38,519 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/75/assignUser
+2026-05-04 13:38:44,059 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/76/assignUser
+2026-05-04 13:38:46,749 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/76/assignUser
+2026-05-04 13:38:52,347 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/77/assignUser
+2026-05-04 13:38:55,771 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/77/assignUser
+2026-05-04 13:39:02,279 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/78/assignUser
+2026-05-04 13:39:04,962 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/78/assignUser
+2026-05-04 13:39:15,242 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/80/assignUser
+2026-05-04 13:39:21,050 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/81/assignUser
+2026-05-04 13:39:24,033 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/18/cards/81/assignUser
+2026-05-04 13:39:34,996 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/82/assignUser
+2026-05-04 13:39:41,513 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/83/assignUser
+2026-05-04 13:39:47,712 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/84/assignUser
+2026-05-04 13:39:54,143 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/85/assignUser
+2026-05-04 13:39:57,259 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/12/cards/85/assignUser
+2026-05-04 13:40:03,535 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/13/cards/86/assignUser
+2026-05-04 13:40:09,165 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/87/assignUser
+2026-05-04 13:40:12,064 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/17/cards/87/assignUser
+2026-05-04 13:40:17,925 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/88/assignUser
+2026-05-04 13:40:23,913 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/stacks/16/cards/89/assignUser
+2026-05-04 13:40:24,016 [INFO]   Cards migradas: 71 | Saltadas: 1
+2026-05-04 13:40:24,017 [INFO]   Comentarios migrados: 0
+2026-05-04 13:40:26,818 [WARNING]   No se pudo añadir ACL para '80cd52dc-0141-1040-8bc4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:29,715 [WARNING]   No se pudo añadir ACL para 'ad1e6394-0141-1040-95df-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:32,555 [WARNING]   No se pudo añadir ACL para 'b3e991b2-0141-1040-9822-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:35,754 [WARNING]   No se pudo añadir ACL para 'b4594958-0141-1040-9848-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:38,561 [WARNING]   No se pudo añadir ACL para 'ad1b2cb0-0141-1040-95dd-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:41,473 [WARNING]   No se pudo añadir ACL para 'a0c87ada-0141-1040-91cc-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:44,547 [WARNING]   No se pudo añadir ACL para 'aecc7df2-0141-1040-9671-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:47,394 [WARNING]   No se pudo añadir ACL para '7b9bb1fa-0141-1040-8b09-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:50,417 [WARNING]   No se pudo añadir ACL para 'b64bd064-0141-1040-98d4-1527633c1823': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:53,182 [WARNING]   No se pudo añadir ACL para 'admin': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:56,009 [WARNING]   No se pudo añadir ACL para '048664fa-9063-1040-8e2e-3328d5de49f3_9566': 405 Client Error: Method Not Allowed for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/4/acl
+2026-05-04 13:40:56,012 [INFO]   ACL configurado para 11 miembros activos
+2026-05-04 13:40:56,013 [INFO] 
+============================================================
+2026-05-04 13:40:56,013 [INFO] RESUMEN DE MIGRACIÓN
+2026-05-04 13:40:56,013 [INFO] ============================================================
+2026-05-04 13:40:56,014 [INFO] ✅ 'ATI - ESTRATEGIA 2024'
+2026-05-04 13:40:56,014 [INFO]    Stacks (columnas): 9
+2026-05-04 13:40:56,014 [INFO]    Cards migradas:    71
+2026-05-04 13:40:56,015 [INFO]    Cards saltadas:    1
+2026-05-04 13:40:56,015 [INFO]    Comentarios:       0
+2026-05-04 13:40:56,015 [INFO]    Labels:            0
+2026-05-04 13:40:56,016 [INFO] 
+Log completo guardado en: migration.log
+2026-05-05 09:47:04,391 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-05 09:47:04,392 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-05 09:47:04,393 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-05 09:47:07,756 [ERROR] Conexión con Nextcloud Deck: ❌ FALLO — 404 Client Error: Not Found for url: https://at-t1.sandetel.es/ocs/v2.php/apps/deck/api/v1.0/boards
+2026-05-05 09:47:07,757 [ERROR] No se puede conectar a Nextcloud Deck. Verifica URL y credenciales.
+2026-05-05 09:49:01,804 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-05 09:49:01,804 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-05 09:49:01,805 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-05 09:50:20,404 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-05 09:50:20,404 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-05 09:50:20,404 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-05 09:50:23,400 [INFO] Conexión con Nextcloud Deck: ✅ OK
+2026-05-05 09:50:23,401 [INFO] 
+============================================================
+2026-05-05 09:50:23,401 [INFO] Migrando: 'ATI - ESTRATEGIA 2024'
+2026-05-05 09:50:23,401 [INFO] ============================================================
+2026-05-05 09:50:26,500 [INFO]   Board creado en Deck: id=5
+2026-05-05 09:50:26,501 [INFO]   Labels creadas: 0
+2026-05-05 09:50:26,501 [INFO]   Sin swimlanes adicionales — stacks directos
+2026-05-05 09:51:08,355 [INFO]   Stacks creados: 9
+2026-05-05 09:51:16,718 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/90/assignUser
+2026-05-05 09:51:19,877 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/90/assignUser
+2026-05-05 09:51:33,554 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/91/assignUser
+2026-05-05 09:51:39,763 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/92/assignUser
+2026-05-05 09:51:45,802 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/93/assignUser
+2026-05-05 09:51:48,880 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/93/assignUser
+2026-05-05 09:51:55,010 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:51:57,784 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:52:00,740 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:52:03,692 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:52:06,596 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:52:09,482 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/94/assignUser
+2026-05-05 09:52:15,908 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/95/assignUser
+2026-05-05 09:52:21,929 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/96/assignUser
+2026-05-05 09:52:28,212 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/97/assignUser
+2026-05-05 09:52:34,280 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/98/assignUser
+2026-05-05 09:52:37,179 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/98/assignUser
+2026-05-05 09:52:43,298 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/99/assignUser
+2026-05-05 09:52:46,391 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/99/assignUser
+2026-05-05 09:52:52,520 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/100/assignUser
+2026-05-05 09:52:55,446 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/100/assignUser
+2026-05-05 09:53:01,348 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/101/assignUser
+2026-05-05 09:53:07,332 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/102/assignUser
+2026-05-05 09:53:10,618 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/102/assignUser
+2026-05-05 09:53:17,044 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/24/cards/103/assignUser
+2026-05-05 09:53:19,998 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/24/cards/103/assignUser
+2026-05-05 09:53:26,063 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/104/assignUser
+2026-05-05 09:53:32,611 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/105/assignUser
+2026-05-05 09:53:35,635 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/105/assignUser
+2026-05-05 09:53:41,975 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/28/cards/106/assignUser
+2026-05-05 09:53:47,969 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/107/assignUser
+2026-05-05 09:53:51,058 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/107/assignUser
+2026-05-05 09:53:57,311 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/108/assignUser
+2026-05-05 09:54:00,493 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/108/assignUser
+2026-05-05 09:54:03,473 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/108/assignUser
+2026-05-05 09:54:10,833 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/109/assignUser
+2026-05-05 09:54:13,936 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/109/assignUser
+2026-05-05 09:54:20,129 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/110/assignUser
+2026-05-05 09:54:23,190 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/110/assignUser
+2026-05-05 09:54:29,579 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/24/cards/111/assignUser
+2026-05-05 09:54:35,635 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/112/assignUser
+2026-05-05 09:54:41,438 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/113/assignUser
+2026-05-05 09:54:44,531 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/113/assignUser
+2026-05-05 09:54:52,516 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/114/assignUser
+2026-05-05 09:54:55,436 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/114/assignUser
+2026-05-05 09:55:01,461 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/28/cards/115/assignUser
+2026-05-05 09:55:07,371 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/116/assignUser
+2026-05-05 09:55:10,298 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/116/assignUser
+2026-05-05 09:55:13,106 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/116/assignUser
+2026-05-05 09:55:16,202 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/116/assignUser
+2026-05-05 09:55:22,191 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/117/assignUser
+2026-05-05 09:55:25,229 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/117/assignUser
+2026-05-05 09:55:31,218 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/118/assignUser
+2026-05-05 09:55:34,132 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/118/assignUser
+2026-05-05 09:55:37,144 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/118/assignUser
+2026-05-05 09:55:40,082 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/118/assignUser
+2026-05-05 09:55:46,489 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/119/assignUser
+2026-05-05 09:55:52,811 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/120/assignUser
+2026-05-05 09:55:55,733 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/120/assignUser
+2026-05-05 09:55:58,792 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/120/assignUser
+2026-05-05 09:56:02,649 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/120/assignUser
+2026-05-05 09:56:08,889 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/121/assignUser
+2026-05-05 09:56:11,949 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/121/assignUser
+2026-05-05 09:56:17,946 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/122/assignUser
+2026-05-05 09:56:24,055 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/123/assignUser
+2026-05-05 09:56:27,008 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/123/assignUser
+2026-05-05 09:56:33,044 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/124/assignUser
+2026-05-05 09:56:39,027 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/28/cards/125/assignUser
+2026-05-05 09:56:45,350 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/126/assignUser
+2026-05-05 09:56:48,259 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/126/assignUser
+2026-05-05 09:56:51,231 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/126/assignUser
+2026-05-05 09:56:54,133 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/126/assignUser
+2026-05-05 09:56:57,003 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/126/assignUser
+2026-05-05 09:57:03,335 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/127/assignUser
+2026-05-05 09:57:06,292 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/127/assignUser
+2026-05-05 09:57:12,803 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/128/assignUser
+2026-05-05 09:57:19,396 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/129/assignUser
+2026-05-05 09:57:22,357 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/129/assignUser
+2026-05-05 09:57:28,085 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/130/assignUser
+2026-05-05 09:57:34,265 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/131/assignUser
+2026-05-05 09:57:37,333 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/131/assignUser
+2026-05-05 09:57:43,189 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/132/assignUser
+2026-05-05 09:57:46,277 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/132/assignUser
+2026-05-05 09:57:52,658 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/133/assignUser
+2026-05-05 09:57:55,669 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/133/assignUser
+2026-05-05 09:57:58,448 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/133/assignUser
+2026-05-05 09:58:04,475 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/134/assignUser
+2026-05-05 09:58:07,183 [WARNING]     No se pudo asignar usuario 'b4594958-0141-1040-9848-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/134/assignUser
+2026-05-05 09:58:13,272 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/135/assignUser
+2026-05-05 09:58:19,188 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/20/cards/136/assignUser
+2026-05-05 09:58:25,154 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/137/assignUser
+2026-05-05 09:58:31,261 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/138/assignUser
+2026-05-05 09:58:37,164 [WARNING]     No se pudo asignar usuario 'a0c87ada-0141-1040-91cc-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/139/assignUser
+2026-05-05 09:58:39,802 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/139/assignUser
+2026-05-05 09:58:45,745 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/140/assignUser
+2026-05-05 09:58:51,726 [WARNING]     No se pudo asignar usuario '7b9bb1fa-0141-1040-8b09-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/141/assignUser
+2026-05-05 09:58:54,511 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/141/assignUser
+2026-05-05 09:58:57,362 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/141/assignUser
+2026-05-05 09:59:03,334 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/142/assignUser
+2026-05-05 09:59:06,418 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/142/assignUser
+2026-05-05 09:59:14,710 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/143/assignUser
+2026-05-05 09:59:17,625 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/143/assignUser
+2026-05-05 09:59:23,839 [WARNING]     No se pudo asignar usuario 'ad1b2cb0-0141-1040-95dd-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/23/cards/144/assignUser
+2026-05-05 09:59:30,375 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/145/assignUser
+2026-05-05 09:59:33,470 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/145/assignUser
+2026-05-05 09:59:41,234 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/146/assignUser
+2026-05-05 09:59:45,222 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/146/assignUser
+2026-05-05 09:59:51,705 [WARNING]     No se pudo asignar usuario 'aecc7df2-0141-1040-9671-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/147/assignUser
+2026-05-05 09:59:56,842 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/147/assignUser
+2026-05-05 10:00:03,297 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/148/assignUser
+2026-05-05 10:00:06,499 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/148/assignUser
+2026-05-05 10:00:13,605 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/149/assignUser
+2026-05-05 10:00:16,749 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/149/assignUser
+2026-05-05 10:00:29,262 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/151/assignUser
+2026-05-05 10:00:35,336 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/152/assignUser
+2026-05-05 10:00:38,390 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/27/cards/152/assignUser
+2026-05-05 10:00:45,175 [WARNING]     No se pudo asignar usuario 'b64bd064-0141-1040-98d4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/153/assignUser
+2026-05-05 10:00:51,376 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/154/assignUser
+2026-05-05 10:00:57,468 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/155/assignUser
+2026-05-05 10:01:03,586 [WARNING]     No se pudo asignar usuario 'ad1e6394-0141-1040-95df-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/156/assignUser
+2026-05-05 10:01:06,749 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/21/cards/156/assignUser
+2026-05-05 10:01:12,889 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/22/cards/157/assignUser
+2026-05-05 10:01:19,165 [WARNING]     No se pudo asignar usuario 'b3e991b2-0141-1040-9822-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/158/assignUser
+2026-05-05 10:01:22,181 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/26/cards/158/assignUser
+2026-05-05 10:01:28,316 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/159/assignUser
+2026-05-05 10:01:34,310 [WARNING]     No se pudo asignar usuario '80cd52dc-0141-1040-8bc4-1527633c1823': 400 Client Error: Bad request for url: https://at-t1.sandetel.es/index.php/apps/deck/api/v1.0/boards/5/stacks/25/cards/160/assignUser
+2026-05-05 10:01:34,413 [INFO]   Cards migradas: 71 | Saltadas: 1
+2026-05-05 10:01:34,413 [INFO]   Comentarios migrados: 0
+2026-05-05 10:02:08,912 [INFO]   ACL configurado para 11 miembros activos
+2026-05-05 10:02:08,913 [INFO] 
+============================================================
+2026-05-05 10:02:08,913 [INFO] RESUMEN DE MIGRACIÓN
+2026-05-05 10:02:08,914 [INFO] ============================================================
+2026-05-05 10:02:08,914 [INFO] ✅ 'ATI - ESTRATEGIA 2024'
+2026-05-05 10:02:08,914 [INFO]    Stacks (columnas): 9
+2026-05-05 10:02:08,914 [INFO]    Cards migradas:    71
+2026-05-05 10:02:08,915 [INFO]    Cards saltadas:    1
+2026-05-05 10:02:08,915 [INFO]    Comentarios:       0
+2026-05-05 10:02:08,915 [INFO]    Labels:            0
+2026-05-05 10:02:08,915 [INFO] 
+Log completo guardado en: migration.log
+2026-05-05 10:21:41,908 [INFO] JSON cargado: 'ATI - ESTRATEGIA 2024' — formato wekan-board-1.0.0 ✅
+2026-05-05 10:21:41,909 [INFO] User mapping cargado: 11 entradas ✅
+2026-05-05 10:21:41,909 [INFO] Conectando a Nextcloud Deck: https://at-t1.sandetel.es
+2026-05-05 10:21:45,265 [INFO] Conexión con Nextcloud Deck: ✅ OK
+2026-05-05 10:21:45,266 [INFO] 
+============================================================
+2026-05-05 10:21:45,266 [INFO] Migrando: 'ATI - ESTRATEGIA 2024'
+2026-05-05 10:21:45,266 [INFO] ============================================================
+2026-05-05 10:21:48,555 [INFO]   Board creado en Deck: id=6
+2026-05-05 10:21:48,556 [INFO]   Labels creadas: 0
+2026-05-05 10:22:22,736 [INFO]   ACL configurado para 11 miembros activos
+2026-05-05 10:22:22,736 [INFO]   Sin swimlanes adicionales — stacks directos
+2026-05-05 10:22:47,254 [INFO]   Stacks creados: 9
+2026-05-05 10:32:54,315 [INFO]   Cards migradas: 71 | Saltadas: 1
+2026-05-05 10:32:54,315 [INFO]   Comentarios migrados: 0
+2026-05-05 10:32:54,315 [INFO] 
+============================================================
+2026-05-05 10:32:54,315 [INFO] RESUMEN DE MIGRACIÓN
+2026-05-05 10:32:54,316 [INFO] ============================================================
+2026-05-05 10:32:54,316 [INFO] ✅ 'ATI - ESTRATEGIA 2024'
+2026-05-05 10:32:54,316 [INFO]    Stacks (columnas): 9
+2026-05-05 10:32:54,316 [INFO]    Cards migradas:    71
+2026-05-05 10:32:54,316 [INFO]    Cards saltadas:    1
+2026-05-05 10:32:54,316 [INFO]    Comentarios:       0
+2026-05-05 10:32:54,316 [INFO]    Labels:            0
+2026-05-05 10:32:54,317 [INFO] 
+Log completo guardado en: migration.log
