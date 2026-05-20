@@ -1,0 +1,99 @@
+Dispositivo BDI;ENTORNO;APP-SERVICE;SERVICIO;APLICACION SOFTWARE;ESTADO APLICACIÓN;DOCKER;VERSION;URL;Ruta Documentación;USO INTERNO/EXTERNO;OBSERVACION;IP;BBDD
+SANPHP01;PRODUCCION;APLICACIÓN;Mision - Proyecto Retech, redes territoriales de especialización tecnológica.;Nextcloud - Mision;ALTA;false;;https://mision.sandetel.int;;EXTERNO;Instancia Nextcloud para proyecto RETECH ;;María DB alojada en SANBDTI01 
+SANEXTCL01;PRODUCCION;APLICACIÓN;Moodle;Moodle;DESARROLLO;true;;https://formacion.sandetel.es;;EXTERNO; lLa version .es de Moodle se instala en docker;;Base de datos - MariaDB en Docker
+SANEXTCL01;PRODUCCION;APLICACIÓN;Gestion de proyectos;OpenProject;ALTA;true;;https://openproject.sandetel.es/.;;EXTERNO;Open source project management software;;SANBDTI01 -- MariaDB
+SANEXTCL01;PRODUCCION;APLICACIÓN;Herramientra manipulación y edición de PDF;Sterling PDF;ALTA;true;;https://pdf.sandetel.es;;EXTERNO;"No se almacenan pdf; toda la gestión de archivos es en local. 01/2025 --> Se pasa al .es";;
+SANTAQ01;PRODUCCION;SERVICIO;Gestion usuarios y aperta de taquillas en oficinas SDT-;Metra - Software taquillas;ALTA;false;;https://taquillas.sandetel.es;;EXTERNO;;10.240.217.175;FIREBIRD (SQL Server Free - Insstalado en la misma MV)
+SANEXTCL01;PRODUCCION;APLICACIÓN;Monitorización y métricas;Grafana;ALTA;true;;https://grafana.sandetel.int/.;;INTERNO;;;
+SANEXTCL01;PRODUCCION;SERVICIO;Herramienta web para gestionar contenedores Docker.​;Portainer;ALTA;true;;https://portainer.sandetel.es/.;;INTERNO;01/2025 --> Se pasa al .es el servicio.;;
+SANEXTCL01;PRODUCCION;APLICACIÓN;Herramienta para proporcionar acceso de confianza cero a servidores y aplicaciones en la nube utilizando SSH, Kubernetes y HTTPS.;Teleport;DESARROLLO;true;;https://teleport.sandetel.int/.;;INTERNO;;;
+SANPHP01;PRODUCCION;APLICACIÓN;Moodle;Moodle;ALTA;false;;https://formacion.sandetel.int;;EXTERNO;Moodle para el personal de Sandetel.;;SANEXTCL01 - Postgres en Docker
+SANEXTCL01;PRODUCCION;SERVICIO;Docker-Ext/ Nuevo servicio de Office para NC;Collabora;ALTA;true;;https://collabora.sandetel.es/;;EXTERNO;Aplicación publicada en internet.;;
+SANTI02;PRODUCCION;APLICACIÓN;Informes Auditoria de Usuarios, Ficheros, permisos y carpetas;Quest - Report Manager;ALTA;false;;Sin URL asociada;;INTERNO;Para hacer los descubrimiento se usa tanto SANTI01 como SANTI02;;SQL Server - P:10.240.214.125 Port:1433 - SQL2017QUEST2/SQL2017QUEST2 -
+SANTI01;PRODUCCION;SERVICIO;Informes Auditoria de Usuarios, Ficheros, permisos y carpetas;Quest -Chage Auditor;ALTA;false;;https://quest-ca.sandetel.int;;INTERNO;Coordiandor 01 / existe optrop coordinador en SANDEG02. El acceso web es límitado, recomendable acceder desde la máquina;;SQL Server - P:10.240.214.125 Port:1433 - SQL2017QUEST2/SQL2017QUEST2 -
+SANPHP01;PRODUCCION;APLICACIÓN;Proyecto Ordenciti - Smart Cities;Nextcloud-Ordenciti;ALTA;false;;https://ordenciti.sandetel.int;;EXTERNO;Instancia Nextcloud para proyecto Ordenciti - Smart CitiesSandetel (05/06/2023 se migra de SANOFI a SANPHP);;María DB alojada en SANBDTI01
+SANPHP01;PRODUCCION;APLICACIÓN;Proyecto Wifi;Nextcloud-Wifi;ALTA;false;;https://wifi.cloud.sandetel.int --> https://wifi-cloud.sandetel.es;;EXTERNO;"Instancia Nextcloud para proyecto WIFI Sandetel; 19/06/2023-->Migrado a SANPHP01 ";;María DB alojada en SANBDTI01
+SANPHP01;PRODUCCION;APLICACIÓN;REJA -Red Emergencias Junta de Andalucía;Nextcloud - Reja;ALTA;false;;https://reja.sandetel.int;;EXTERNO;Instancia Nextcloud para proyecto Red Emergencias Junta Andalucía.  19/06/2023-->Migrado a SANPHP01 ;;María DB alojada en SANBDTI01 
+SANWAZ01;PRODUCCION;APLICACIÓN;Aplicación de recogida de estádúisticas de uso de diferente aplicaciones;Matomo - Estadisticas;ALTA;false;;https://stats.sandetel.es;;INTERNO;"29/12/2022: BBDD Migrada a SANBDTI01; 09/2023 --> Se publica en intgernet (.es) para obtener datos de aplicaciones que se encuentren publicadas fuera de RCJA";;SANBDTI01 - MariaDB del área TI
+SANPHP01;PRODUCCION;APLICACIÓN;Wiki documicro;Documicro;ALTA;false;;https://documicro.sandetel.es;;INTERNO;"Servicio migrado de SANPHPT01; se pasa al .es en 01/2025";;
+SANVDI02;PRODUCCION;SERVICIO;Virtualización De Escritorio (Navisión y Nóminas);"RDWA Remote Desktop Web Access (IIS);  RDCB Remote Desktop Connection Broker; RDSH Remote Desktop  Host Session";ALTA;;Clonada de SANVDI01;;;EXTERNO;Pdte de validación ;;
+SANNOM01;PRODUCCION;SERVICIO;NÓMINAS Y MATERIAL DE OFICINA;NÓMINAS Y MATERIAL DE OFICINA - PRO;ALTA;;ORIGINAL DE BOLLULLOS Clonada de VM DESANNOM01 ;https://empleados.sandetel.es/;;EXTERNO;En PRO es modalidad gestionada. No existe entorno de PRE. En DES-Sandetel la VM es en modalidad NO GESTIONADA Se acordó solicitar el paso a producción vía clonado del servicio de nóminas y material de oficina, a partir de lo desplegado en el servidor de desarrollo DESSANNOM01;;
+SANEXTCL01;PRODUCCION;SERVICIO;PILOTO ODO;ODO CONECTOR;BAJA;true;;https://eu.connect.checkpoint.com/sandetel / https://portal.checkpoint.com/;;INTERNO;Mayo 2023 --> Se reactiva el proyecto. Queda funcionando y verificado. Instalado como Docker-compose -->/var/www/ODO/docker-compose.yml. Pantalla de configuración: https://portal.checkpoint.com/. SE procede a dar de baja el piloto.;;
+SANOFI01;PRODUCCION;APLICACIÓN;Glpi local;GLPI;ALTA;false;;https://inventario.sandetel.int/;;INTERNO;"PHP; 29/12/2022 BBDD Migrada a SANBDTI01";;
+SANEXTCL01;PRODUCCION;SERVICIO;Gestor de contraseñas del Área;Vaultwarden;ALTA;true;;https://bitwarden.sandetel.int/;IT-060 Bitwarden - Gestor de contraseñas \\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Actualización y seguridad\Seguridad\#G.Pet;INTERNO;;;
+SANEXTCL01;PRODUCCION;APLICACIÓN;Monitorización Seguridad de Servidores Sandetel;Wazuh;ALTA;true;;https://wazuh.sandetel.int/.;;INTERNO;10/2023 --> Se instala en docker la aplicación  ;;
+SANEXTCL01;PRODUCCION;APLICACIÓN;GATE - CMDBUILD;Netdata;ALTA;true;;https://netdata.sandetel.es;;INTERNO;Migrada de Sanwaz01;;
+SANEXTCL01;PRODUCCION;;Redis cache nextcloud;Redis cache nextcloud;BAJA;true;;Sin URL asociada;;EXTERNO;;;
+SANEXTCL01;PRODUCCION;;Docker-Ext/ Aplic migrada de sanofi01 onlioffice para nextcloud /;Onlyoffice;BAJA;true;;https://onlyoffice.sandetel.int/;;EXTERNO;Migrada de Sanofi01;;
+SANEXTCL01;PRODUCCION;APLICACIÓN;Docker-Ext/ Aplic migrada de sanofi01 Wekan -app (Kanban);Wekan app y DB;ALTA;true;;https://kanban.sandetel.es;;EXTERNO;"Migrada de Sanofi01;  01/2025 --> Se pasa al .es";;
+DESSANBI01;DESARROLLO;SERVICIO;Proyecto Bi-Sandetel - BD Postgres para Navision;Proyecto Bi-Sandetel ;ALTA;;;;;EXTERNO;BAse de datos  postgresql para Navision;;
+DESIVAMAN01;DESARROLLO;;Maquina De Pruebas;Maquina De Pruebas;BAJA;false;;;;INTERNO;Anterior VM de pruebas de Ivanti;;
+DESSANNOM01;DESARROLLO;SERVICIO;NÓMINAS Y MATERIAL DE OFICINA;NÓMINAS Y MATERIAL DE OFICINA -DES;ALTA;;Original migrada de Maquina física Bollullos;https://empleados.sandetel.int/ ;;EXTERNO;En DES-Sandetel la VM es en modalidad NO GESTIONADA Se acordó solicitar el paso a producción vía clonado del servicio de nóminas y material de oficina, a partir de lo desplegado en el servidor de  desarrollo DESSANNOM01;;
+BOLLULLOS;;; Web de Nominas de Sandetel ;Web de NÓminas de Sandetel;BAJA;;;;;EXTERNO;ESTA VM no está operativa. El servicio de nóminas se da por la VM SANNOM01;;
+DPSSANVDI01;DESARROLLO;; Virtualización De Escritorio (Navision Y Nóminas);"RDWA Remote Desktop Web Access (IIS); 
+RDCB Remote Desktop Connection Broker
+RDSH Remote Desktop Host Session";ALTA;false;;https://dpssanvdi01/Rdweb;;EXTERNO;"Tres componentes:RDWA Remote Desktop Web Access (IIS); 
+RDCB Remote Desktop Connection Broker
+RDSH Remote Desktop Host Session";;
+SANVDI01;PRODUCCION;; Virtualización De Escritorio (Navision Y Nóminas);"RDWA Remote Desktop Web Access (IIS); 
+RDCB Remote Desktop Connection Broker
+RDSH Remote Desktop Host Session";ALTA;false;;https://sanvdi01.intcmd.sandetel.int/Rdweb;;EXTERNO;"Tres componentes:RDWA Remote Desktop Web Access (IIS); 
+RDCB Remote Desktop Connection Broker
+RDSH Remote Desktop Host Session";;
+PRESANGRE01;PREPRODUCCION;SERVICIO;Gregistro-Sandetel PRE;Gregistro;ALTA;false;;https://pre-registro.sandetel.es/;;EXTERNO;Servidor apagado;;
+SANGRE01;PRODUCCION;SERVICIO;Gregistro-Sandetel;Gregistro;ALTA;false;;https://registro.sandetel.es/;\\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Aplicaciones\Corporativas\#REF;EXTERNO; Se ubican en la red los manuales MU-110 GRegistro - Usuario administrador MU-111 GRegistro - Usuario avanzado MU-112 GRegistro - Usuario básico;;
+DESSANHVA01;PREPRODUCCION;SERVICIO;Portal Web Zonadigital- PRE;Zona Digital ;ALTA;false;;https://zonadigital-pre.sandetel.es/catalogo;;EXTERNO;;;
+SANHVA01;PRODUCCION;SERVICIO;Portal Web Zonadigital;Zona Digital ;ALTA;false;;https://zonadigital.sandetel.es/;;EXTERNO;;;
+DESSANNOT01;DESARROLLO;;Notificaciones Electrónicas Sandetel -DES;Notificaciones Electrónicas Sandetel;BAJA;false;;http://10.240.241.54:8080/mnt/;;EXTERNO;La VM se encuentra dada de baja;;
+SANNOT01;PRODUCCION;;Notificaciones Electrónicas Sandetel;Notificaciones Electrónicas Sandetel;BAJA;false;;http://comunicaciones.sandetel.es;;EXTERNO;LA VM se encuentra apagada. La aplicación no es accesible por ello. Instalación según MONOTEL_20180822_MBC_v01r00.docx ;;
+DESSANCOM01;DESARROLLO;SERVICIO;Compliance-Canal Denuncias-DES;Compliance;BAJA;false;;  https://canaldedenuncias.sandetel.es/;;EXTERNO;Este servicio aún no se ha puesto en marcha pq no tenemos CCO en la empresa ;;
+DPSSANDIN01;DESARROLLO;SERVICIO;Compliance-Canal Denuncias-PRE;Compliance;BAJA;false;;;;EXTERNO;Este servicio aún no se ha puesto en marcha pq no tenemos CCO en la empresa;;
+SANDIN01;PRODUCCION;SERVICIO;Canal denuncias;Compliance;ALTA;false;;https://canaldedenuncias.sandetel.es/;;EXTERNO;"La aplicación está programada en Java, utilizando el framework ""Play"" y un almacén en SQLite.";;
+DESSANLIC01;DESARROLLO;APLICACIÓN;Portal de licitaciones -DES;Portal de licitaciones -DES;ALTA;false;;http://10.240.240.232:8080/G3/services/AltaExpedienteWS?wsdl ;;EXTERNO;;;
+DPSSANLINC03;PREPRODUCCION;APLICACIÓN;Portal de licitaciones -PRE;Portal del licitador (PDL) -PRE;BAJA;false;;https://licitaciones-dps.sandetel.es/pdl/index.action;;EXTERNO;LA VM se encuentra apagada. La aplicación no es accesible por ello.;;
+DPSSANLINC02;PREPRODUCCION;APLICACIÓN;Portal de licitaciones -PRE;Portal del licitador (PDL) -PRE;BAJA;false;;https://licitaciones-dps.sandetel.es/pdl/index.action;;EXTERNO;LA VM se encuentra apagada. La aplicación no es accesible por ello.;;
+DPSSANLIC01;PREPRODUCCION;APLICACIÓN;Portal de licitaciones -PRE;Nodo gestor y Agenda - PRE;ALTA;false;;https://licitaciones-dps.sandetel.es/tramitacion/;;EXTERNO;;;
+SANLIC03;PRODUCCION;APLICACIÓN;Portal de licitaciones;Portal del licitador (PDL).;ALTA;false;;https://licitaciones.sandetel.es/;;EXTERNO;;;
+SANLIC02;PRODUCCION;APLICACIÓN;Portal de licitaciones;Portal del licitador (PDL).;ALTA;false;;https://licitaciones.sandetel.es/;;EXTERNO;;;
+SANLIC01;PRODUCCION;APLICACIÓN;Portal de licitaciones;"Nodo gestor y Agenda .  G3: Gestor expedientes contratación. 
+Trew@: Motor de tramitación.
+ @firma: Autenticación y firma. 
+Port@firmas; envío a firma. 
+Licitaciones:Bandeja de publicaciones Expediente Contratación. 
+PDL: Portal Licitacion";ALTA;false;;https://licitaciones.sandetel.es/tramitacion/;;EXTERNO;"G3: Gestor expedientes contratación. 
+Trew@: Motor de tramitación.
+ @firma: Autenticación y firma. 
+Port@firmas; envío a firma. 
+Licitaciones:Bandeja de publicaciones Expediente Contratación. 
+PDL: Portal Licitacion";;
+SANGEM01;PRODUCCION;APLICACIÓN;GEMA (Sistema de Agenda);Sogo - Memcached;ALTA;false;2.3.20;http://gema.sandetel.int;;EXTERNO;;;
+DPSALMSAN03;DESARROLLO;SERVICIO;Almacenamiento Compartido De Sandetel Para Oficina;Almacenamiento Compartido De Sandetel Para Oficina;BAJA;false;;;;EXTERNO;LA VM se encuentra apagada;;
+DPSALMSAN02;DESARROLLO;SERVICIO;Almacenamiento Compartido De Sandetel Para Oficina;Almacenamiento Compartido De Sandetel Para Oficina;BAJA;false;;;;EXTERNO;La VM se encuentra apagada;;
+SANDCO03;PRODUCCION;SERVICIO;Controladores de Dominio;Controladores de Dominio;ALTA;false;;;;EXTERNO;;;
+SANDCO04;PRODUCCION;SERVICIO;Controladores de Dominio;Controladores de Dominio;ALTA;false;;;;EXTERNO;;;
+ALMSAN02;PRODUCCION;SERVICIO;Almacenamiento Compartido De Sandetel Para Oficina;Almacenamiento Compartido De Sandetel Para Oficina;ALTA;false;;;;EXTERNO;;;
+ALMSAN01;PRODUCCION;APLICACIÓN;Almacenamiento Compartido De Sandetel Para Oficina;Almacenamiento Compartido De Sandetel Para Oficina;ALTA;false;;;;EXTERNO;;;
+PRESADNAV02;PREPRODUCCION;APLICACIÓN;Navision en PRE;Navision en PRE;ALTA;false;;;;EXTERNO;;;
+DESSADNAV02;DESARROLLO;APLICACIÓN;Navision en DES;Navision en DES;ALTA;false;;;;EXTERNO;;;
+SADNAV02;PRODUCCION;APLICACIÓN;Navisión;Navision Server;ALTA;;;http://10.240.216.104:8080/DynamicsNAV90/WebClient/;;EXTERNO;Tiene Windows Server 2012 R2 Standard: S.O. con configuraciones básicas y Navisión Server;;
+SANNPP01;PRODUCCION;SERVICIO;Puesto De Trabajo Servidor Impresión Ndd;Puesto De Trabajo Servidor Impresión Ndd;ALTA;;;;;INTERNO;;;
+DESSANSEG01;DESARROLLO;APLICACIÓN;Anterior Pruebas Gate.;Anterior Pruebas Gate.;BAJA;;;;;INTERNO;Rocketchat parado por no arrancar la estancia docker, cmdbuild no está, collabora está parado;;
+DESSANSEG02;DESARROLLO;APLICACIÓN;Entorno pruebas SANSEG02;Entorno pruebas SANSEG02;BAJA;;;;;INTERNO;;;
+SANSEG04;PRODUCCION;APLICACIÓN;Cmdbuild-Tic Interna;Nueva versión CMDBuild TI interna;ALTA;false;;https://cmdb-ti.sandetel.int;IT-132 CMDB-TI - Acceso a la herramienta \\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Aplicaciones\Servidor\#G.CS       MU-115 CMDB-TI - Descripción general  \\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Aplicaciones\Servidor\#Ref    MU-114 CMDB-TI - Manual técnico	\\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Aplicaciones\Servidor\#Ref;INTERNO;;;
+SANSEG03;PRODUCCION;APLICACIÓN;Base De Datos Altos Cargos 24X7 Rcja;CMDBuild gestion datos Altos cargos 24x7;ALTA;false;;https://gac.sandetel.int/;;EXTERNO;Máquina en exclusiva para este servicio de 24x7;;
+SANSEG02;PRODUCCION;APLICACIÓN;Informes Cumplimiento;Permisions Reporter;ALTA;false;;Sin URL asociada;;INTERNO;Recopilación de permisos sobre carpetas de archivo diaria y mensual para Informes de Compliance.;;
+SANSEG02;PRODUCCION;APLICACIÓN;Informes Auditoria de Usuarios, Ficheros, permisos y carpetas;Quest - Chage Auditor;ALTA;false;;https://quest-ca.sandetel.int;;INTERNO;Coordinador 2 .Existe otro coordinador en SANTI01.  El acceso web es limitado, recomendable acceder desde la propia máquina.;;SQL Server - P:10.240.214.125 Port:1433 - SQL2017QUEST2/SQL2017QUEST2 -
+SANSEG02;PRODUCCION;APLICACIÓN;Autoservicio de Claves - Aplicación Gestión de Claves de Dominio ;ManageEngine;BAJA;false;;https://autoservicio.sandetel.int/;;EXTERNO;Se instala la aplicación nueva en SANTI02 y se gestiona con el dominio autoservicio.sandetel.es;;
+DESSANCRM01;;;Proyecto CRM de Sandetel;Proyecto CRM de Sandetel;BAJA;;;;;;BAJA Proyecto CRM de Sandetel. Solicitado 28/04 la eliminación con backup quinquenal en SRQ- 1125063 / RAD-1134628 . 14/06/2022. Ejecutada la baja de la RAD-1134628 solicitada en SRQ -1125063;;
+SANCRM01;;;Proyecto CRM de Sandetel;Proyecto CRM de Sandetel;BAJA;;;;;;BAJA Proyecto CRM de Sandetel. Solicitado 28/04 la eliminación con backup quinquenal en SRQ- 1125063 / RAD-1134628 . 14/06/2022. Ejecutada la baja de la RAD-1134628 solicitada en SRQ -1125063;;
+SANGPT01;PRODUCCION;APLICACIÓN;Documicro y Gestion IP;Documicro y -gestiónIP;BAJA;;;https://gestionip.sandetel.int;;INTERNO;Gestiion IP de baja. Documicro mitrada a SANOFI01;;
+SANBOD01;PRODUCCION;SERVICIO;Bodet;software Bodet / KELUX,;ALTA;false;;https://bodet.sandetel.int/;;EXTERNO;"BodetServiceTomcat
+BodetServiceSupervisor
+Sentinel LDK License Manager
+Hora de Windows";;
+SANWSU02;PRODUCCION;SERVICIO;Windows Server Update Services del Area TIC Interna;MS WSUS de Area TIC Interna;ALTA;false;;http://10.240.216.27:8530/ https://wsus-ti.sandetel.es;;INTERNO;Para ir por https se pasa por https://wsus-ti.sandetel.es;;
+SANSEG04;PRODUCCION;APLICACIÓN;GATE - Control y Gestión Usuarios Externos y sus accesos a la Infr. TIC ;CMDBuild;ALTA;false; 2.5.1;https://gate.sandetel.es/ ;;INTERNO;Vm dada de baja. La url no está en servicio por tanto // El servicio se pasa a SANSEG04 junto cmb interna;;
+SANPHP01;PRODUCCION;SERVICIO;Wordpress con el directorio de empresa;Directorio;ALTA;false;;https://directorio.sandetel.es;;EXTERNO;"29/12/2022: BBDD Migrada a SANBDTI01; Se pasa el servicio a la MV SANPHP01 y cambiamos el dominio a .es";;MariaDB - SANBDTI01
+SANPHP01;PRODUCCION;SERVICIO;Redirecciona a otra VM;Autoservicio;BAJA;false;;http://admanager.intcdm.sandetel.int:8888/;;EXTERNO;Redirecciona a otra VM (SANSEG02) -- Autoservicio se instala en .es en MB SANTI02;;
+SANOFI01;;;Gestor documental ;Gesttdoc;BAJA;false;;https://gestdoc.sandetel.int/;;EXTERNO;Pendiente de montarse. En Junio de 2023 no está montada la aplicación ;;
+SANPHP01;PRODUCCION;APLICACIÓN;Nextcloud;Nextcloud;ALTA;false;;https://cloud.sandetel.es;MU-113 Cloud					\\archivo.intcdm.sandetel.int\7.TELE_CDG\5.TEL_PLP\3.GES_PT\Operaciones\Organismos\SAND\Documentos\Aplicaciones\Escritorio\#Ref;EXTERNO;"PHP // 09/2023 --> Se publica en F5 con visibilidad dentro de RCJA; cambio de dominio al .es y uso de certificado wildcard de Sandetel";;SANBDTI01 (MariaDB del Aŕea TI)
