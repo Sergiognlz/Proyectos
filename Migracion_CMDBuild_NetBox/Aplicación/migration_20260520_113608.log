@@ -1,4 +1,0 @@
-2026-05-20 11:36:08,969 [INFO] Iniciando migración CMDBuild → NetBox
-2026-05-20 11:36:08,970 [INFO] NetBox URL: http://localhost:8000
-2026-05-20 11:36:08,970 [INFO] Log: C:\Users\sgonzalez\Desktop\proyectos\Migracion_CMDBuild_NetBox\Aplicación\migration_20260520_113608.log
-2026-05-20 11:36:08,990 [ERROR] No se puede conectar con NetBox: 403 Client Error: Forbidden for url: http://localhost:8000/api/
