@@ -227,7 +227,7 @@ function generarPDF() {
     y += logoH + 2;
     doc.setDrawColor(0,122,51); doc.setLineWidth(0.6);
     doc.line(M, y, M+W, y);
-    y += 4;
+    y += 9;
 
     // ==============================
     // TÍTULO
@@ -374,8 +374,8 @@ function generarPDF() {
     // TEXTO LEGAL
     // ==============================
     const parrafosLegal = document.querySelectorAll('.texto-legal p');
-    const FS_LEGAL = 5.2;
-    const LINE_H   = FS_LEGAL * 0.43;
+    const FS_LEGAL = 6.2;
+    const LINE_H   = FS_LEGAL * 0.45;
     doc.setFontSize(FS_LEGAL); doc.setFont('helvetica','normal');
     let legalH = 2.5;
     parrafosLegal.forEach(p => {
@@ -398,7 +398,7 @@ function generarPDF() {
     // ==============================
     const espacioRestante = PH - M - y;
     const labelH  = 5;
-    const firmaH  = Math.max(espacioRestante - labelH - 1, 12);
+    const firmaH  = Math.min(espacioRestante - labelH - 1, 35);
     const firmaW  = W/2 - 3;
 
     doc.setFontSize(7.5); doc.setFont('helvetica','bold');
